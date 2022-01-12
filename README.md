@@ -9,7 +9,7 @@ Supervised by: `Dr. SESHASAI SRINIVASAN`, McMaster University
 
 | S.No.  | Name           	             | Student No. | Email		                         |
 |:------:|:-----------------------------:|:-----------:| :-------------------------------: |
-| 1      | Emily Goodwin                 |             | goodwe2@mcmaster.ca               |
+| 1      | Emily Goodwin                 | 400352097   | goodwe2@mcmaster.ca               |
 
 
 ### Presentation/ Database Layer - Web App
