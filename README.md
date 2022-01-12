@@ -23,7 +23,7 @@ Supervised by: `Dr. SESHASAI SRINIVASAN`, McMaster University
 
 | S.No.  | Name           	             | Student No. | Email		                         |
 |:------:|:-----------------------------:|:-----------:| :-------------------------------: |
-| 1      | Stefan Slehta                 |             | slehtas@mcmaster.ca               |
+| 1      | Stefan Slehta                 |  400291135  | slehtas@mcmaster.ca               |
 
 
 #### Important Links
