@@ -1,0 +1,21 @@
+Meetings Notes January 16, 2022
+Features
+•	Notifications to practice
+•	Web application, input images, phrases, captions, match
+•	Mobile application, to do notifications
+•	Sync with db 
+•	REST API
+Tables
+•	Login
+o	Username
+o	Email
+o	Password
+•	Profile 
+•	Question
+•	Groups 
+Architecture
+•	Chandra & Stefan will develop base framework then we will add off that
+Base user stories to be added by Chandra
+Next meeting on Tuesday after class – talking about project specification 
+Finish base application then add on more
+Violet to hand in project document with names and application title/synopsis
