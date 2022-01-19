@@ -12,25 +12,25 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="contorl-label" for="UsernameTextBox">Username</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="txtUsername" Placeholder="Username" required="true" TextMode="Password"></asp:TextBox>
+                            <label class="contorl-label" for="form-group-input">Username</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtUsername" Placeholder="Username" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label class="contorl-label" for="EmailTextBox">Email</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" Placeholder="Email" required="true" TextMode="Email"></asp:TextBox>
+                            <label class="contorl-label" for="form-group-input">Email</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" Placeholder="Email" required="true"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label class="contorl-label" for="PasswordTextBox">Password</label>
+                            <label class="contorl-label" for="form-group-input">Password</label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" Placeholder="Password" required="true" TextMode="Password"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
-                            <label class="contorl-label" for="ConfirmTextBox">Confirm</label>
+                            <label class="contorl-label" for="form-group-input">Confirm</label>
                             <asp:TextBox runat="server" CssClass="form-control" ID="txtConfirm" Placeholder="Confirm" required="true" TextMode="Password"></asp:TextBox>
                         </div>
                         <div class="text-left">
-                            <asp:Button runat="server" ID="SubmitButton" CssClass="btn btn-primary" UseSubmitBehavior="false" CausesValidation="false" Text="Register" />
-                            <asp:Button runat="server" ID="CancelButton" CssClass="btn btn-warning" UseSubmitBehavior="false" CausesValidation="false" Text="Cancel" />
+                            <asp:Button runat="server" ID="RegisterButton" CssClass="btn btn-primary" Text="Register" />
+                            <asp:Button runat="server" ID="CancelButton" CssClass="btn btn-warning" Text="Cancel" />
                         </div>
                     </div>
                 </div>
