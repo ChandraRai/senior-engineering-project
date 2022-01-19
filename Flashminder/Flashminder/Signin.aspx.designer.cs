@@ -10,7 +10,7 @@
 namespace Flashminder {
     
     
-    public partial class Default {
+    public partial class Signin {
         
         /// <summary>
         /// LabelField control.

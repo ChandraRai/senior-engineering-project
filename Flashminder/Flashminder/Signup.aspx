@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label class="contorl-label" for="form-group-input">Password</label>
-                            <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" Placeholder="Password" required="true" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" Placeholder="Password" TextMode="Password"></asp:TextBox>
                         </div>
 
                         <div class="form-group">
