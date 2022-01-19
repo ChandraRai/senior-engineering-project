@@ -28,7 +28,7 @@
                         <address>
                             <strong>Stefan Slehta</strong><br />
                             400291135<br />
-                            <abbr title="Email">goodwe2@mcmaster.ca</abbr><br />
+                            <abbr title="Email">slehtas@mcmaster.ca</abbr><br />
                         </address>
                         <address>
                             <strong>Violet Huang</strong><br />
