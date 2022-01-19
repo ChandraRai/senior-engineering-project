@@ -13,5 +13,15 @@ namespace Flashminder
         {
 
         }
+
+        protected void SendButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("About.aspx");
+        }
     }
 }
