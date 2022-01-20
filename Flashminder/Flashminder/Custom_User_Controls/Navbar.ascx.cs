@@ -23,6 +23,9 @@ namespace Flashminder.Custom_User_Controls
         {
             switch (Page.Title)
             {
+                case "Home Page":
+                    home.Attributes.Add("class", "active");
+                    break;
                 case "Sign in":
                     signin.Attributes.Add("class", "active");
                     break;

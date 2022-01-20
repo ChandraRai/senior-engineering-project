@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Assets\avatar.png" />
     <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -75,7 +84,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Custom_User_Controls\Footer.ascx" />
+    <Content Include="CreateTables.sql" />
     <Content Include="Custom_User_Controls\Jumbotron.ascx" />
     <Content Include="Custom_User_Controls\Navbar.ascx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -93,10 +102,28 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Home.aspx" />
+    <Content Include="Models\FlashminderModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlashminderModel.Context.cs</LastGenOutput>
+      <DependentUpon>FlashminderModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FlashminderModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FlashminderModel.edmx</DependentUpon>
+      <LastGenOutput>FlashminderModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Signin.aspx" />
+    <EntityDeploy Include="Models\FlashminderModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FlashminderModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FlashminderModel.edmx.diagram">
+      <DependentUpon>FlashminderModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
@@ -111,13 +138,6 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Custom_User_Controls\Footer.ascx.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Custom_User_Controls\Footer.ascx.designer.cs">
-      <DependentUpon>Footer.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Custom_User_Controls\Jumbotron.ascx.cs">
       <DependentUpon>Jumbotron.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +151,31 @@
     </Compile>
     <Compile Include="Custom_User_Controls\Navbar.ascx.designer.cs">
       <DependentUpon>Navbar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlashminderModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashminderModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlashminderModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FlashminderModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashminderModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERS.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signup.aspx.cs">
@@ -167,7 +212,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
