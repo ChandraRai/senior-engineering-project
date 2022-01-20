@@ -11,7 +11,8 @@ namespace Flashminder
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // WebForms UnobtrusiveValidationMode requires a ScriptResourceMapping for jquery
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
         protected void SendButton_Click(object sender, EventArgs e)
@@ -21,7 +22,7 @@ namespace Flashminder
 
         protected void CancelButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("About.aspx");
+            Response.Redirect("~/About.aspx");
         }
     }
 }

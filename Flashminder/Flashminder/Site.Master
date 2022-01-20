@@ -1,6 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Flashminder.Site" %>
 <%@ Register Src="~/Custom_User_Controls/Navbar.ascx" TagName="Navbar" TagPrefix="cusnav" %>
-<%@ Register Src="~/Custom_User_Controls/Footer.ascx" TagName="Footer" TagPrefix="cusfooter" %>
 
 <!DOCTYPE html>
 
@@ -16,7 +15,7 @@
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
 
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">        
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -31,7 +30,12 @@
         </div>
 
         <!-- This section is for custom footer -->
-        <cusfooter:Footer runat="server"></cusfooter:Footer> 
+        <footer class="footer">
+            <div class="container text-center">
+                <h5 class="text-muted">&copy; All Rights Reserved - Flashminder Team</h5>
+                <h6 class="text-muted">SFWRTECH 4FD3 2022 Winter</h6>
+            </div>
+        </footer>
     </form>
 
     <!-- JavaScript Section -->

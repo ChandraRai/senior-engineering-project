@@ -110,3 +110,7 @@ D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminde
 D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\obj\Debug\Flashminder.csproj.CopyComplete
 D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\obj\Debug\Flashminder.dll
 D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\obj\Debug\Flashminder.pdb
+D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\bin\EntityFramework.dll
+D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\bin\EntityFramework.SqlServer.dll
+D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\bin\EntityFramework.xml
+D:\One Drive - ITC Systems\OneDrive - ITC Systems\Desktop\Flashminder\Flashminder\bin\EntityFramework.SqlServer.xml
