@@ -19,5 +19,15 @@ namespace Flashminder.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public short Privilege { get; set; }
+
+
+        public USERS()
+        {
+            
+        }
+        public USERS(string username)
+        {
+            this.Username = username;
+        }
     }
 }

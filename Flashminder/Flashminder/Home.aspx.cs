@@ -20,24 +20,42 @@ namespace Flashminder
             {
                 // Get the UserProfile data
                 this.GetUserProfile();
-
             }
         }
 
         // Method to get user profile data from DB
         protected void GetUserProfile()
         {
+            // Bind the result to Gridview 
+            rptrUserProfile.DataSource = GetUser();
+            rptrUserProfile.DataBind();
+        }
+
+        protected List<USERS> GetUser()
+        {          
+            var myUser = new List<USERS>();
+
             // Connect to EF
             using (DefaultConnection db = new DefaultConnection())
             {
                 // query USERS table using EF and LINQ
                 var Users = (from allUsers in db.USERS select allUsers);
 
-                // Bind the result to Gridview
-                //UserProfileGridView.DataSource = Users.ToList();
-                //UserProfileGridView.DataBind();
-                rptrUserProfile.DataSource = Users.ToList();
-                rptrUserProfile.DataBind();
+                foreach (var user in Users)
+                {
+                    if (Session["CurrentUser"] is null)
+                    {
+                        Session["CurrentUser"] = "Administrator";
+                        Session["Email"] = "admin@example.com";
+                    }
+
+                    // verify Username
+                    if (user.Username == Session["CurrentUser"].ToString())
+                    {
+                        myUser.Add(user);
+                    }
+                }
+                return myUser;
             }
         }
     }
