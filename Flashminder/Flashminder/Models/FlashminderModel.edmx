@@ -36,7 +36,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Privilege" Type="smallint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Flashcard__fk_Ca__540C7B00">
+        <Association Name="FK__Flashcard__fk_Ca__3CBF0154">
           <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
           <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -48,7 +48,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__UserI__55009F39">
+        <Association Name="FK__Flashcard__UserI__3DB3258D">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -64,11 +64,11 @@
           <EntitySet Name="CardType" EntityType="Self.CardType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flashcard" EntityType="Self.Flashcard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Flashcard__fk_Ca__540C7B00" Association="Self.FK__Flashcard__fk_Ca__540C7B00">
+          <AssociationSet Name="FK__Flashcard__fk_Ca__3CBF0154" Association="Self.FK__Flashcard__fk_Ca__3CBF0154">
             <End Role="CardType" EntitySet="CardType" />
             <End Role="Flashcard" EntitySet="Flashcard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__UserI__55009F39" Association="Self.FK__Flashcard__UserI__55009F39">
+          <AssociationSet Name="FK__Flashcard__UserI__3DB3258D" Association="Self.FK__Flashcard__UserI__3DB3258D">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="Flashcard" EntitySet="Flashcard" />
           </AssociationSet>
