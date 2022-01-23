@@ -4,7 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="flashminderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="flashminderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CardType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Flashcard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FrontText" Type="nvarchar" MaxLength="500" />
+          <Property Name="BackText" Type="nvarchar" MaxLength="500" />
+          <Property Name="FrontImage" Type="varbinary(max)" />
+          <Property Name="BackImage" Type="varbinary(max)" />
+          <Property Name="fk_CardType" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="USERS">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,11 +36,44 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Privilege" Type="smallint" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Flashcard__fk_Ca__540C7B00">
+          <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
+          <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard">
+              <PropertyRef Name="fk_CardType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flashcard__UserI__55009F39">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="flashminderModelStoreContainer">
+          <EntitySet Name="CardType" EntityType="Self.CardType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flashcard" EntityType="Self.Flashcard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Flashcard__fk_Ca__540C7B00" Association="Self.FK__Flashcard__fk_Ca__540C7B00">
+            <End Role="CardType" EntitySet="CardType" />
+            <End Role="Flashcard" EntitySet="Flashcard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flashcard__UserI__55009F39" Association="Self.FK__Flashcard__UserI__55009F39">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="Flashcard" EntitySet="Flashcard" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="flashminderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,10 +86,69 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Privilege" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Flashcards" Relationship="flashminderModel.FK__Flashcard__UserI__395884C4" FromRole="USERS" ToRole="Flashcard" />
         </EntityType>
         <EntityContainer Name="DefaultConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="USERS" EntityType="flashminderModel.USERS" />
+          <EntitySet Name="CardTypes" EntityType="flashminderModel.CardType" />
+          <EntitySet Name="Flashcards" EntityType="flashminderModel.Flashcard" />
+          <AssociationSet Name="FK__Flashcard__fk_Ca__3864608B" Association="flashminderModel.FK__Flashcard__fk_Ca__3864608B">
+            <End Role="CardType" EntitySet="CardTypes" />
+            <End Role="Flashcard" EntitySet="Flashcards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flashcard__UserI__395884C4" Association="flashminderModel.FK__Flashcard__UserI__395884C4">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="Flashcard" EntitySet="Flashcards" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="CardType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Flashcards" Relationship="flashminderModel.FK__Flashcard__fk_Ca__3864608B" FromRole="CardType" ToRole="Flashcard" />
+        </EntityType>
+        <EntityType Name="Flashcard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FrontText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BackText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FrontImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BackImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fk_CardType" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CardType" Relationship="flashminderModel.FK__Flashcard__fk_Ca__3864608B" FromRole="Flashcard" ToRole="CardType" />
+          <NavigationProperty Name="USER" Relationship="flashminderModel.FK__Flashcard__UserI__395884C4" FromRole="Flashcard" ToRole="USERS" />
+        </EntityType>
+        <Association Name="FK__Flashcard__fk_Ca__3864608B">
+          <End Type="flashminderModel.CardType" Role="CardType" Multiplicity="1" />
+          <End Type="flashminderModel.Flashcard" Role="Flashcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard">
+              <PropertyRef Name="fk_CardType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flashcard__UserI__395884C4">
+          <End Type="flashminderModel.USERS" Role="USERS" Multiplicity="0..1" />
+          <End Type="flashminderModel.Flashcard" Role="Flashcard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +163,29 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardTypes">
+            <EntityTypeMapping TypeName="flashminderModel.CardType">
+              <MappingFragment StoreEntitySet="CardType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flashcards">
+            <EntityTypeMapping TypeName="flashminderModel.Flashcard">
+              <MappingFragment StoreEntitySet="Flashcard">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="fk_CardType" ColumnName="fk_CardType" />
+                <ScalarProperty Name="BackImage" ColumnName="BackImage" />
+                <ScalarProperty Name="FrontImage" ColumnName="FrontImage" />
+                <ScalarProperty Name="BackText" ColumnName="BackText" />
+                <ScalarProperty Name="FrontText" ColumnName="FrontText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

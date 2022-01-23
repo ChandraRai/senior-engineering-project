@@ -35,8 +35,7 @@ namespace Flashminder
                     if (user.Username == UserNameTextBox.Text
                         && user.Password == Sha1(Salt(PasswordTextBox.Text)))
                     {
-                        Session["CurrentUser"] = UserNameTextBox.Text;
-                        Response.Cookies["userName"].Value = UserNameTextBox.Text;
+                        System.Web.Security.FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
 
                         // Redirect to Home Page
                         Response.Redirect("~/Home.aspx");

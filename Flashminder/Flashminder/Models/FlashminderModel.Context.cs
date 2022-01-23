@@ -26,5 +26,7 @@ namespace Flashminder.Models
         }
     
         public virtual DbSet<USERS> USERS { get; set; }
+        public virtual DbSet<CardType> CardTypes { get; set; }
+        public virtual DbSet<Flashcard> Flashcards { get; set; }
     }
 }
