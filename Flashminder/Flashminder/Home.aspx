@@ -21,7 +21,7 @@
                                 <address>
                                     <strong><%#Eval("Username")%></strong><br />
                                     <abbr title="Email"><%#Eval("Email")%></abbr><br />
-                                </address>
+                                </address><span id="test"></span>
                             </div>
                         </div>
                     </div>
