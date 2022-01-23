@@ -19,12 +19,19 @@ Supervised by: `Dr. SESHASAI SRINIVASAN`, McMaster University
 | 1      | Chandra Rai         | 400351588   | raic1@mcmaster.ca                 |
 
 
-### Presentation/ Logic Layer - Mobile Version
+### Presentation/ Logic Layer - Mobile Version (Android/iOS)
 
 | S.No.  | Name           	             | Student No. | Email		                         |
 |:------:|:-----------------------------:|:-----------:| :-------------------------------: |
 | 1      | Stefan Slehta                 |  400291135  | slehtas@mcmaster.ca               |
+| 2      | Violet Huang                  |  400348357  | huanx34@mcmaster.ca               |
 
+<br/><br/>
+
+```
+Flashminder High Level Architechture
+```
+![alt text](https://github.com/ChandraRai/senior-engineering-project/blob/main/Flashminder%20High%20Level%20Architechture.jpeg)
 
 #### Important Links
 * [Please login to the PIVOTAL TRACKER for User Requirements.](https://www.pivotaltracker.com/n/projects/2549365)
