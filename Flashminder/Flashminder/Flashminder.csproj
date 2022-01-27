@@ -84,6 +84,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="CreateCategory.aspx" />
     <Content Include="CreateFlashcard.aspx" />
     <Content Include="CreateTables.sql" />
     <Content Include="Custom_User_Controls\Jumbotron.ascx" />
@@ -139,6 +140,13 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateCategory.aspx.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateCategory.aspx.designer.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreateFlashcard.aspx.cs">
       <DependentUpon>CreateFlashcard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -170,7 +178,13 @@
     <Compile Include="Models\CardType.cs">
       <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Flashcard.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard_Category.cs">
       <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FlashminderModel.Context.cs">

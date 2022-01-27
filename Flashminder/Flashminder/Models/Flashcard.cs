@@ -14,6 +14,12 @@ namespace Flashminder.Models
     
     public partial class Flashcard
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Flashcard()
+        {
+            this.Flashcard_Category = new HashSet<Flashcard_Category>();
+        }
+    
         public Nullable<int> UserId { get; set; }
         public int Id { get; set; }
         public string FrontText { get; set; }
@@ -26,5 +32,7 @@ namespace Flashminder.Models
     
         public virtual CardType CardType { get; set; }
         public virtual USERS USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Flashcard_Category> Flashcard_Category { get; set; }
     }
 }

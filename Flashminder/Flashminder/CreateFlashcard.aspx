@@ -4,6 +4,15 @@
     <script type="text/javascript" src="Scripts/jquery-2.2.3.js"></script>
     <script type="text/javascript">
 
+
+		function OpenPopup() {
+
+            var newWindow = window.open("CreateCategory.aspx", "List", "toolbar=no, location=no,status=yes,menubar=no,scrollbars=yes,resizable=yes, width=500,height=300,left=430,top=100");
+            newWindow.onbeforeunload = function () { location.reload() }
+
+            return false;
+		}
+
         function ValidateForm() {
             var ret = true;
             if (!$(".front_txtbx").val() && !$(".front_upload").val()) {
@@ -19,7 +28,7 @@
 				ShowMessage("Text can only be 500 characters", "warning");
                 ret= false;
             }
-			if ($(".front_txtbx").val() && $(".back_txtbx").val().length > 500) {
+			if ($(".back_txtbx").val() && $(".back_txtbx").val().length > 500) {
 				ShowMessage("Text can only be 500 characters", "warning");
                 ret=false;
             }
@@ -74,13 +83,14 @@
             <div class="col-md-offset-2  col-md-6">
                 <div id="MessagePanel" style="padding-bottom:25px">
                     <asp:Panel ID="message_pnl" CssClass="message_pnl" runat="server" >
-                        <a href="#" class ="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <a href="#" class ="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
                         <asp:Label ID="message_lbl" CssClass="message_lbl" runat="server" />
                     </asp:Panel>
                 </div>
                 <div>
-                    <asp:DropDownList runat="server"></asp:DropDownList>
-                    <asp:Button text="Create Category" runat="server"/>
+                    <asp:Label ID="category_lbl" runat="server">Category: </asp:Label>
+                    <asp:DropDownList ID="category_dropdownlist" runat="server" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true" ></asp:DropDownList>
+                    <button type="button" ID="createCategory_btn" OnClick="OpenPopup()">Create Category</button>
                 </div>
                 <div>
                     <asp:Label ID="front_lbl" runat="server">Front</asp:Label>

@@ -25,6 +25,7 @@ namespace Flashminder
     {
         const int MAX_CARD_TEXT = 500;
 
+        //show message on client
         //https://stackoverflow.com/questions/35823379/bootstrap-alert-in-button-event-on-asp-net
         public void ShowMessage(string message, WarningType warning)
         {
@@ -35,7 +36,7 @@ namespace Flashminder
         }
 
 
-
+        // on page load
         protected void Page_Load(object sender, EventArgs e)
         {
             string user = HttpContext.Current.User.Identity.Name;
@@ -43,6 +44,22 @@ namespace Flashminder
             {
                 Response.Redirect("~/Signin.aspx");
             }
+
+            // if no category exists, make a default category
+            // populate drop down
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                int userInt = int.Parse(user);
+                List<Category>categories = db.Categories.Where(cat=>(cat.UserId==userInt)).ToList();
+                if (categories.Count == 0)
+                {
+                    Category.CreateDefault(userInt);
+                }
+                category_dropdownlist.DataSource = db.Categories.Where(cat => (cat.UserId == userInt)).ToList();
+                category_dropdownlist.DataBind();
+            }
+            
+            // set result message if successful then clear
             if ((Session["ResultMessage"] != null) && (Session["ResultType"] != null))
             {
                 string msg = Session["ResultMessage"].ToString();
@@ -58,6 +75,7 @@ namespace Flashminder
 
         }
 
+        // validate the flashcard has valid information
         private bool ValidateForm()
         {
             if ((string.IsNullOrEmpty(front_txtbx.Text) && string.IsNullOrEmpty(front_upload.FileName)) ||
@@ -74,6 +92,7 @@ namespace Flashminder
             return true;
         }
 
+        // create the flashcard with given information
         protected void CreateFlashCard(object sender, EventArgs e)
         {
             if (!ValidateForm())
@@ -81,14 +100,19 @@ namespace Flashminder
                 return;
             }
             string user = HttpContext.Current.User.Identity.Name;
+            int userInt = int.Parse(user);
             if (!string.IsNullOrEmpty(user))
             {
                 // Connect to EF
                 using (DefaultConnection db = new DefaultConnection())
                 {
                     Flashcard flashcard = new Flashcard();
-                    flashcard.CardType = db.CardTypes.Find(1);
-                    flashcard.UserId = int.Parse(user);
+                    Flashcard_Category relation = new Flashcard_Category(); // set flashcard 2 category too
+                    relation.Flashcard = flashcard;
+                    relation.CategoryId = int.Parse(category_dropdownlist.SelectedValue);
+                    relation.UserID = userInt;
+                    flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
+                    flashcard.UserId = userInt;
                     if (front_txtbx.Text.Length <= MAX_CARD_TEXT)
                     {
                         flashcard.FrontText = front_txtbx.Text; // clean?
@@ -107,6 +131,7 @@ namespace Flashminder
                     }
                     flashcard.CreatedDate = DateTime.Now;
                     db.Flashcards.Add(flashcard);
+                    db.Flashcard_Category.Add(relation);
                     int ret = db.SaveChanges();
                     if (ret > 0)
                     {

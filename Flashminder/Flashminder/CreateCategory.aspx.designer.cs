@@ -11,7 +11,7 @@ namespace Flashminder
 {
 
 
-    public partial class CreateFlashcard
+    public partial class CreateCategory
     {
 
         /// <summary>
@@ -33,76 +33,49 @@ namespace Flashminder
         protected global::System.Web.UI.WebControls.Label message_lbl;
 
         /// <summary>
-        /// category_lbl control.
+        /// success_lbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label category_lbl;
+        protected global::System.Web.UI.WebControls.Label success_lbl;
 
         /// <summary>
-        /// category_dropdownlist control.
+        /// categoryName_lbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList category_dropdownlist;
+        protected global::System.Web.UI.WebControls.Label categoryName_lbl;
 
         /// <summary>
-        /// front_lbl control.
+        /// categoryName_txtbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label front_lbl;
+        protected global::System.Web.UI.WebControls.TextBox categoryName_txtbx;
 
         /// <summary>
-        /// front_upload control.
+        /// categoryDesc_lbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload front_upload;
+        protected global::System.Web.UI.WebControls.Label categoryDesc_lbl;
 
         /// <summary>
-        /// front_txtbx control.
+        /// categoryDesc_txtbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox front_txtbx;
-
-        /// <summary>
-        /// back_lbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label back_lbl;
-
-        /// <summary>
-        /// back_upload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload back_upload;
-
-        /// <summary>
-        /// back_txtbx control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox back_txtbx;
+        protected global::System.Web.UI.WebControls.TextBox categoryDesc_txtbx;
 
         /// <summary>
         /// create_btn control.

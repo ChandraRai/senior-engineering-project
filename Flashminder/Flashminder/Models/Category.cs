@@ -12,31 +12,37 @@ namespace Flashminder.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USERS
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USERS()
+        public Category()
         {
-            this.Flashcards = new HashSet<Flashcard>();
-            this.Categories = new HashSet<Category>();
             this.Flashcard_Category = new HashSet<Flashcard_Category>();
         }
-        public USERS(string username)
+    
+        public int Id { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDesc { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        static public int CreateDefault(int userId)
         {
-            this.Username = username;
-            this.Flashcards = new HashSet<Flashcard>();
+            int ret = 0;
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                Category category = new Category();
+                category.CategoryName = "Default";
+                category.CreatedDate = DateTime.Now;
+                category.UserId = userId;
+                db.Categories.Add(category);
+                ret = db.SaveChanges();
+            }
+            return ret;
         }
 
-        public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public short Privilege { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flashcard> Flashcards { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Category> Categories { get; set; }
+        public virtual USERS USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flashcard_Category> Flashcard_Category { get; set; }
     }

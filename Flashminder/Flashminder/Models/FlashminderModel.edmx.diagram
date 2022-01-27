@@ -10,6 +10,12 @@
         <EntityTypeShape EntityType="flashminderModel.Flashcard" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__fk_Ca__3864608B" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__UserI__395884C4" />
+        <EntityTypeShape EntityType="flashminderModel.Category" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="flashminderModel.FK__Category__UserId__61F08603" />
+        <EntityTypeShape EntityType="flashminderModel.Flashcard_Category" Width="1.5" PointX="5.25" PointY="3" />
+        <AssociationConnector Association="flashminderModel.FK__Flashcard__Categ__79C80F94" />
+        <AssociationConnector Association="flashminderModel.FK__Flashcard__Flash__7ABC33CD" />
+        <AssociationConnector Association="flashminderModel.FK__Flashcard__UserI__78D3EB5B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
