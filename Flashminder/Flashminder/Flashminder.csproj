@@ -130,6 +130,7 @@
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Signup.aspx" />
+    <Content Include="ViewFlashcards.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +227,13 @@
     </Compile>
     <Compile Include="Signin.aspx.designer.cs">
       <DependentUpon>Signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFlashcards.aspx.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFlashcards.aspx.designer.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

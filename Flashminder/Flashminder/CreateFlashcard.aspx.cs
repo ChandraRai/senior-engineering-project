@@ -121,13 +121,19 @@ namespace Flashminder
                     {
                         flashcard.BackText = back_txtbx.Text;
                     }
-                    if (front_upload.FileBytes != null)
+                    if (!string.IsNullOrEmpty(front_upload.FileName))
                     {
-                        flashcard.FrontImage = front_upload.FileBytes;
+                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                        string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
+                        front_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_front_" + filetype));
+                        flashcard.FrontImage = user + "_" + fileName + "_front_" + filetype;
                     }
-                    if (back_upload.FileBytes != null)
+                    if (!string.IsNullOrEmpty(back_upload.FileName))
                     {
-                        flashcard.BackImage = back_upload.FileBytes;
+                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                        string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
+                        back_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_back_" + filetype));
+                        flashcard.BackImage = user + "_" + fileName + "_back_" + filetype;
                     }
                     flashcard.CreatedDate = DateTime.Now;
                     db.Flashcards.Add(flashcard);

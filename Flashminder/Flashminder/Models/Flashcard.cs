@@ -24,15 +24,15 @@ namespace Flashminder.Models
         public int Id { get; set; }
         public string FrontText { get; set; }
         public string BackText { get; set; }
-        public byte[] FrontImage { get; set; }
-        public byte[] BackImage { get; set; }
+        public string FrontImage { get; set; }
+        public string BackImage { get; set; }
         public int fk_CardType { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         public virtual CardType CardType { get; set; }
-        public virtual USERS USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flashcard_Category> Flashcard_Category { get; set; }
+        public virtual USERS USER { get; set; }
     }
 }

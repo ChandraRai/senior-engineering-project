@@ -19,7 +19,7 @@ namespace Flashminder.Models
         public int FlashcardId { get; set; }
     
         public virtual Category Category { get; set; }
-        public virtual Flashcard Flashcard { get; set; }
         public virtual USERS USER { get; set; }
+        public virtual Flashcard Flashcard { get; set; }
     }
 }
