@@ -50,12 +50,6 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -90,6 +84,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="CreateCategory.aspx" />
+    <Content Include="CreateFlashcard.aspx" />
     <Content Include="CreateTables.sql" />
     <Content Include="Custom_User_Controls\Jumbotron.ascx" />
     <Content Include="Custom_User_Controls\Navbar.ascx" />
@@ -109,7 +105,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Home.aspx" />
-    <Content Include="Logout.aspx" />
     <Content Include="Models\FlashminderModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FlashminderModel.Context.cs</LastGenOutput>
@@ -130,15 +125,13 @@
     </EntityDeploy>
     <Content Include="Models\FlashminderModel.edmx.diagram">
       <DependentUpon>FlashminderModel.edmx</DependentUpon>
-      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Signup.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="ViewFlashcards.aspx" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -147,6 +140,20 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCategory.aspx.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateCategory.aspx.designer.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateFlashcard.aspx.cs">
+      <DependentUpon>CreateFlashcard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateFlashcard.aspx.designer.cs">
+      <DependentUpon>CreateFlashcard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Custom_User_Controls\Jumbotron.ascx.cs">
       <DependentUpon>Jumbotron.ascx</DependentUpon>
@@ -169,12 +176,17 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Logout.aspx.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Models\CardType.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Logout.aspx.designer.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard_Category.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FlashminderModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -216,7 +228,13 @@
     <Compile Include="Signin.aspx.designer.cs">
       <DependentUpon>Signin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Startup.cs" />
+    <Compile Include="ViewFlashcards.aspx.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFlashcards.aspx.designer.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
