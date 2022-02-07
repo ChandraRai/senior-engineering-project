@@ -11,7 +11,21 @@ namespace Flashminder.Custom_User_Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPageActive();
+            if(!IsPostBack)
+            {
+                if (Session["CurrentUser"] != null)
+                {
+                    PrivatePlaceHolder.Visible = true;
+                    PublicPlaceHolder.Visible = false;
+                }
+                else
+                {
+                    PrivatePlaceHolder.Visible = false;
+                    PublicPlaceHolder.Visible = true;
+                }
+
+                SetPageActive();
+            }
         }
         /**
          * 
@@ -34,7 +48,7 @@ namespace Flashminder.Custom_User_Controls
                     break;
                 case "About":
                     about.Attributes.Add("class", "active");
-                    break;
+                    break;                
             }
         }
 

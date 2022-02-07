@@ -43,11 +43,11 @@ namespace Flashminder
 
                 foreach (var user in Users)
                 {
-                    if (Session["CurrentUser"] is null)
-                    {
-                        Session["CurrentUser"] = "Administrator";
-                        Session["Email"] = "admin@example.com";
-                    }
+                    //if (Session["CurrentUser"] is null)
+                    //{
+                    //    Session["CurrentUser"] = "Administrator";
+                    //    Session["Email"] = "admin@example.com";
+                    //}
 
                     // verify Username
                     if (user.Username == Session["CurrentUser"].ToString())
