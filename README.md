@@ -31,7 +31,7 @@ Supervised by: `Dr. SESHASAI SRINIVASAN`, McMaster University
 ```
 Flashminder High Level Architechture
 ```
-![alt text](https://github.com/ChandraRai/senior-engineering-project/blob/main/Flashminder%20High%20Level%20Architechture.jpeg)
+![alt text](https://github.com/ChandraRai/senior-engineering-project/blob/main/Flashminder.jpeg)
 
 #### Important Links
 * [Please login to the PIVOTAL TRACKER for User Requirements.](https://www.pivotaltracker.com/n/projects/2549365)
