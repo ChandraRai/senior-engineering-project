@@ -18,8 +18,16 @@ namespace Flashminder
             // If loading the page for the first time, populate the UserProfileGridView
             if(!IsPostBack)
             {
-                // Get the UserProfile data
-                this.GetUserProfile();
+                if(Session["CurrentUser"] == null)
+                {
+                    Response.Redirect("About.aspx");
+                }
+                else
+                {
+                    // Get the UserProfile data
+                    this.GetUserProfile();
+                }
+                
             }
         }
 
@@ -43,11 +51,11 @@ namespace Flashminder
 
                 foreach (var user in Users)
                 {
-                    //if (Session["CurrentUser"] is null)
-                    //{
-                    //    Session["CurrentUser"] = "Administrator";
-                    //    Session["Email"] = "admin@example.com";
-                    //}
+                    if (Session["CurrentUser"] is null)
+                    {
+                        Session["CurrentUser"] = "";
+                        Session["Email"] = "";
+                    }
 
                     // verify Username
                     if (user.Username == Session["CurrentUser"].ToString())
