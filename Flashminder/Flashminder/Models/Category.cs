@@ -27,21 +27,6 @@ namespace Flashminder.Models
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
     
-        static public int CreateDefault(int userId)
-        {
-            int ret = 0;
-            using (DefaultConnection db = new DefaultConnection())
-            {
-                Category category = new Category();
-                category.CategoryName = "Default";
-                category.CreatedDate = DateTime.Now;
-                category.UserId = userId;
-                db.Categories.Add(category);
-                ret = db.SaveChanges();
-            }
-            return ret;
-        }
-
         public virtual USERS USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flashcard_Category> Flashcard_Category { get; set; }

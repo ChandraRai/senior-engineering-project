@@ -18,6 +18,7 @@ namespace Flashminder.Models
         public Flashcard()
         {
             this.Flashcard_Category = new HashSet<Flashcard_Category>();
+            this.Flashcard_Algorithm_Data = new HashSet<Flashcard_Algorithm_Data>();
         }
     
         public Nullable<int> UserId { get; set; }
@@ -34,5 +35,7 @@ namespace Flashminder.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Flashcard_Category> Flashcard_Category { get; set; }
         public virtual USERS USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Flashcard_Algorithm_Data> Flashcard_Algorithm_Data { get; set; }
     }
 }

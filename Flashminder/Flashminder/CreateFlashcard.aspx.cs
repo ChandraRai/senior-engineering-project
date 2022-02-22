@@ -53,7 +53,7 @@ namespace Flashminder
                 List<Category>categories = db.Categories.Where(cat=>(cat.UserId==userInt)).ToList();
                 if (categories.Count == 0)
                 {
-                    Category.CreateDefault(userInt);
+                    DatabaseMutators.CreateDefaultCategory(userInt);
                 }
                 category_dropdownlist.DataSource = db.Categories.Where(cat => (cat.UserId == userInt)).ToList();
                 category_dropdownlist.DataBind();
@@ -108,11 +108,21 @@ namespace Flashminder
                 {
                     Flashcard flashcard = new Flashcard();
                     Flashcard_Category relation = new Flashcard_Category(); // set flashcard 2 category too
+                    Flashcard_Algorithm_Data algData = new Flashcard_Algorithm_Data();
+                    algData.Easiness = 2.5;
+                    algData.Flashcard = flashcard;
+                    algData.Interval = 1;
+                    algData.Quality = 0;
+                    algData.Repetitions = 0;
+                    algData.NextPratice = DateTime.Now;
+
                     relation.Flashcard = flashcard;
                     relation.CategoryId = int.Parse(category_dropdownlist.SelectedValue);
                     relation.UserID = userInt;
                     flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
                     flashcard.UserId = userInt;
+                    flashcard.FrontImage = "";
+                    flashcard.BackImage = "";
                     if (front_txtbx.Text.Length <= MAX_CARD_TEXT)
                     {
                         flashcard.FrontText = front_txtbx.Text; // clean?
@@ -138,6 +148,7 @@ namespace Flashminder
                     flashcard.CreatedDate = DateTime.Now;
                     db.Flashcards.Add(flashcard);
                     db.Flashcard_Category.Add(relation);
+                    db.Flashcard_Algorithm_Data.Add(algData);
                     int ret = db.SaveChanges();
                     if (ret > 0)
                     {

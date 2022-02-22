@@ -17,16 +17,11 @@ namespace Flashminder.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USERS()
         {
-            this.Flashcards = new HashSet<Flashcard>();
             this.Categories = new HashSet<Category>();
             this.Flashcard_Category = new HashSet<Flashcard_Category>();
-        }
-        public USERS(string username)
-        {
-            this.Username = username;
             this.Flashcards = new HashSet<Flashcard>();
         }
-
+    
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

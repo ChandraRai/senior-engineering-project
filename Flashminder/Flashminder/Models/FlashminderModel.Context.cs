@@ -30,5 +30,6 @@ namespace Flashminder.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Flashcard_Category> Flashcard_Category { get; set; }
         public virtual DbSet<Flashcard> Flashcards { get; set; }
+        public virtual DbSet<Flashcard_Algorithm_Data> Flashcard_Algorithm_Data { get; set; }
     }
 }

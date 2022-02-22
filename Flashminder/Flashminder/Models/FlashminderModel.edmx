@@ -37,6 +37,18 @@
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Flashcard_Algorithm_Data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlashcardId" Type="int" />
+          <Property Name="Easiness" Type="float" />
+          <Property Name="Interval" Type="int" />
+          <Property Name="Quality" Type="tinyint" />
+          <Property Name="NextPratice" Type="datetime" />
+          <Property Name="Repetitions" Type="int" />
+        </EntityType>
         <EntityType Name="Flashcard_Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -56,7 +68,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Privilege" Type="smallint" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Category__UserId__405A880E">
+        <Association Name="FK__Category__UserId__190BB0C3">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="Category" Type="Self.Category" Multiplicity="*" />
           <ReferentialConstraint>
@@ -68,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__Categ__451F3D2B">
+        <Association Name="FK__Flashcard__Categ__1DD065E0">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Flashcard_Category" Type="Self.Flashcard_Category" Multiplicity="*" />
           <ReferentialConstraint>
@@ -80,7 +92,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__fk_Ca__3B95D2F1">
+        <Association Name="FK__Flashcard__fk_Ca__1446FBA6">
           <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
           <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__Flash__46136164">
+        <Association Name="FK__Flashcard__Flash__1EC48A19">
           <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="1" />
           <End Role="Flashcard_Category" Type="Self.Flashcard_Category" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +116,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__UserI__3C89F72A">
+        <Association Name="FK__Flashcard__Flash__257187A8">
+          <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="0..1" />
+          <End Role="Flashcard_Algorithm_Data" Type="Self.Flashcard_Algorithm_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flashcard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard_Algorithm_Data">
+              <PropertyRef Name="FlashcardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flashcard__UserI__153B1FDF">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="Flashcard" Type="Self.Flashcard" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +140,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Flashcard__UserI__442B18F2">
+        <Association Name="FK__Flashcard__UserI__1CDC41A7">
           <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
           <End Role="Flashcard_Category" Type="Self.Flashcard_Category" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,29 +156,34 @@
           <EntitySet Name="CardType" EntityType="Self.CardType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flashcard" EntityType="Self.Flashcard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flashcard_Algorithm_Data" EntityType="Self.Flashcard_Algorithm_Data" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flashcard_Category" EntityType="Self.Flashcard_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Category__UserId__405A880E" Association="Self.FK__Category__UserId__405A880E">
+          <AssociationSet Name="FK__Category__UserId__190BB0C3" Association="Self.FK__Category__UserId__190BB0C3">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="Category" EntitySet="Category" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__Categ__451F3D2B" Association="Self.FK__Flashcard__Categ__451F3D2B">
+          <AssociationSet Name="FK__Flashcard__Categ__1DD065E0" Association="Self.FK__Flashcard__Categ__1DD065E0">
             <End Role="Category" EntitySet="Category" />
             <End Role="Flashcard_Category" EntitySet="Flashcard_Category" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__fk_Ca__3B95D2F1" Association="Self.FK__Flashcard__fk_Ca__3B95D2F1">
+          <AssociationSet Name="FK__Flashcard__fk_Ca__1446FBA6" Association="Self.FK__Flashcard__fk_Ca__1446FBA6">
             <End Role="CardType" EntitySet="CardType" />
             <End Role="Flashcard" EntitySet="Flashcard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__Flash__46136164" Association="Self.FK__Flashcard__Flash__46136164">
+          <AssociationSet Name="FK__Flashcard__Flash__1EC48A19" Association="Self.FK__Flashcard__Flash__1EC48A19">
             <End Role="Flashcard" EntitySet="Flashcard" />
             <End Role="Flashcard_Category" EntitySet="Flashcard_Category" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__UserI__3C89F72A" Association="Self.FK__Flashcard__UserI__3C89F72A">
+          <AssociationSet Name="FK__Flashcard__Flash__257187A8" Association="Self.FK__Flashcard__Flash__257187A8">
+            <End Role="Flashcard" EntitySet="Flashcard" />
+            <End Role="Flashcard_Algorithm_Data" EntitySet="Flashcard_Algorithm_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flashcard__UserI__153B1FDF" Association="Self.FK__Flashcard__UserI__153B1FDF">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="Flashcard" EntitySet="Flashcard" />
           </AssociationSet>
-          <AssociationSet Name="FK__Flashcard__UserI__442B18F2" Association="Self.FK__Flashcard__UserI__442B18F2">
+          <AssociationSet Name="FK__Flashcard__UserI__1CDC41A7" Association="Self.FK__Flashcard__UserI__1CDC41A7">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="Flashcard_Category" EntitySet="Flashcard_Category" />
           </AssociationSet>
@@ -205,6 +234,11 @@
           <AssociationSet Name="FK__Flashcard__UserI__3C89F72A" Association="flashminderModel.FK__Flashcard__UserI__3C89F72A">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="Flashcard" EntitySet="Flashcards" />
+          </AssociationSet>
+          <EntitySet Name="Flashcard_Algorithm_Data" EntityType="flashminderModel.Flashcard_Algorithm_Data" />
+          <AssociationSet Name="FK__Flashcard__Flash__257187A8" Association="flashminderModel.FK__Flashcard__Flash__257187A8">
+            <End Role="Flashcard" EntitySet="Flashcards" />
+            <End Role="Flashcard_Algorithm_Data" EntitySet="Flashcard_Algorithm_Data" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CardType">
@@ -292,6 +326,7 @@
           <NavigationProperty Name="CardType" Relationship="flashminderModel.FK__Flashcard__fk_Ca__3B95D2F1" FromRole="Flashcard" ToRole="CardType" />
           <NavigationProperty Name="Flashcard_Category" Relationship="flashminderModel.FK__Flashcard__Flash__46136164" FromRole="Flashcard" ToRole="Flashcard_Category" />
           <NavigationProperty Name="USER" Relationship="flashminderModel.FK__Flashcard__UserI__3C89F72A" FromRole="Flashcard" ToRole="USERS" />
+          <NavigationProperty Name="Flashcard_Algorithm_Data" Relationship="flashminderModel.FK__Flashcard__Flash__257187A8" FromRole="Flashcard" ToRole="Flashcard_Algorithm_Data" />
         </EntityType>
         <Association Name="FK__Flashcard__fk_Ca__3B95D2F1">
           <End Type="flashminderModel.CardType" Role="CardType" Multiplicity="1" />
@@ -326,6 +361,31 @@
             </Principal>
             <Dependent Role="Flashcard">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Flashcard_Algorithm_Data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlashcardId" Type="Int32" />
+          <Property Name="Easiness" Type="Double" />
+          <Property Name="Interval" Type="Int32" />
+          <Property Name="Quality" Type="Byte" />
+          <Property Name="NextPratice" Type="DateTime" Precision="3" />
+          <Property Name="Repetitions" Type="Int32" />
+          <NavigationProperty Name="Flashcard" Relationship="flashminderModel.FK__Flashcard__Flash__257187A8" FromRole="Flashcard_Algorithm_Data" ToRole="Flashcard" />
+        </EntityType>
+        <Association Name="FK__Flashcard__Flash__257187A8">
+          <End Type="flashminderModel.Flashcard" Role="Flashcard" Multiplicity="0..1" />
+          <End Type="flashminderModel.Flashcard_Algorithm_Data" Role="Flashcard_Algorithm_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flashcard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flashcard_Algorithm_Data">
+              <PropertyRef Name="FlashcardId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -387,6 +447,19 @@
                 <ScalarProperty Name="FrontText" ColumnName="FrontText" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flashcard_Algorithm_Data">
+            <EntityTypeMapping TypeName="flashminderModel.Flashcard_Algorithm_Data">
+              <MappingFragment StoreEntitySet="Flashcard_Algorithm_Data">
+                <ScalarProperty Name="Repetitions" ColumnName="Repetitions" />
+                <ScalarProperty Name="NextPratice" ColumnName="NextPratice" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Interval" ColumnName="Interval" />
+                <ScalarProperty Name="Easiness" ColumnName="Easiness" />
+                <ScalarProperty Name="FlashcardId" ColumnName="FlashcardId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

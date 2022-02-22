@@ -90,6 +90,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="CreateCategory.aspx" />
+    <Content Include="CreateFlashcard.aspx" />
     <Content Include="CreateTables.sql" />
     <Content Include="Custom_User_Controls\Jumbotron.ascx" />
     <Content Include="Custom_User_Controls\Navbar.ascx" />
@@ -123,6 +125,8 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Signin.aspx" />
     <EntityDeploy Include="Models\FlashminderModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -139,6 +143,11 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+	<Content Include="ViewDashboard.aspx" />
+    <Content Include="ViewFlashcard.aspx" />
+    <Content Include="ViewFlashcards.aspx" />
+    <Content Include="ViewQuiz.aspx" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -147,6 +156,20 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCategory.aspx.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateCategory.aspx.designer.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateFlashcard.aspx.cs">
+      <DependentUpon>CreateFlashcard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateFlashcard.aspx.designer.cs">
+      <DependentUpon>CreateFlashcard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Custom_User_Controls\Jumbotron.ascx.cs">
       <DependentUpon>Jumbotron.ascx</DependentUpon>
@@ -162,6 +185,8 @@
     <Compile Include="Custom_User_Controls\Navbar.ascx.designer.cs">
       <DependentUpon>Navbar.ascx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseAccessors.cs" />
+    <Compile Include="DatabaseMutators.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,9 +194,20 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Logout.aspx.cs">
-      <DependentUpon>Logout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Models\CardType.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard_Algorithm_Data.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flashcard_Category.cs">
+      <DependentUpon>FlashminderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
@@ -215,6 +251,35 @@
     </Compile>
     <Compile Include="Signin.aspx.designer.cs">
       <DependentUpon>Signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LearningAlgorithms.cs" />
+    <Compile Include="ViewDashboard.aspx.cs">
+      <DependentUpon>ViewDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewDashboard.aspx.designer.cs">
+      <DependentUpon>ViewDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFlashcard.aspx.cs">
+      <DependentUpon>ViewFlashcard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFlashcard.aspx.designer.cs">
+      <DependentUpon>ViewFlashcard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFlashcards.aspx.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFlashcards.aspx.designer.cs">
+      <DependentUpon>ViewFlashcards.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewQuiz.aspx.cs">
+      <DependentUpon>ViewQuiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewQuiz.aspx.designer.cs">
+      <DependentUpon>ViewQuiz.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

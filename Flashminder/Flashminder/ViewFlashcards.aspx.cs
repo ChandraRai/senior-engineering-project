@@ -36,25 +36,11 @@ namespace Flashminder
 
         private void LoadFlashcards(string user, string category)
         {
-            if (!string.IsNullOrEmpty(user))
-            {                
-                int userInt = Int32.Parse(user);
-
-                using (DefaultConnection db = new DefaultConnection())
-                {
-                    if (category_dropdownlist.SelectedValue=="All")
-                    {
-
-                        flashcards_datalist.DataSource = db.Flashcards.Where(flashcard => (flashcard.UserId == userInt)).ToList();
-                    }
-                    else
-                    {
-                        IQueryable<Flashcard_Category> flashcardCategory = db.Flashcard_Category.Where(cat=>(cat.Category.CategoryName == category));
-                        List<Flashcard> cards = (from flashcards in db.Flashcards join combined in flashcardCategory on flashcards.Id equals combined.FlashcardId where flashcards.UserId == userInt select flashcards).ToList();
-                        flashcards_datalist.DataSource = cards;
-                    }
-                    flashcards_datalist.DataBind();
-                }
+            List<Flashcard> list = DatabaseAccessors.LoadFlashcardsByCategoryName(user, category).ToList();
+            if (list != null)
+            {
+                flashcards_datalist.DataSource = list;
+                flashcards_datalist.DataBind();
             }
         }
     }
