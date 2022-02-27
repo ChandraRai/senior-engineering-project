@@ -7,10 +7,8 @@
                 <div class="row">
                     <div class="col-md-offset-4 col-md-4">
                         <h3>Hello! <%#Eval("Username")%>
-
                         </h3>
                         <div class="panel panel-default">
-                            
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     Profile
@@ -21,7 +19,8 @@
                                 <address>
                                     <strong><%#Eval("Username")%></strong><br />
                                     <abbr title="Email"><%#Eval("Email")%></abbr><br />
-                                </address><span id="test"></span>
+                                </address>
+                                <span id="test"></span>
                             </div>
                         </div>
                     </div>
@@ -29,4 +28,15 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <div class="text-right">
+                    <asp:Button runat="server" ID="Quiz" CssClass="btn btn-info" Text="Start Quiz" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
 </asp:Content>
