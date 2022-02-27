@@ -143,7 +143,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-	<Content Include="ViewDashboard.aspx" />
+    <Content Include="ViewDashboard.aspx" />
     <Content Include="ViewFlashcard.aspx" />
     <Content Include="ViewFlashcards.aspx" />
     <Content Include="ViewQuiz.aspx" />
@@ -193,6 +193,10 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Models\CardType.cs">
       <DependentUpon>FlashminderModel.tt</DependentUpon>
@@ -296,6 +300,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

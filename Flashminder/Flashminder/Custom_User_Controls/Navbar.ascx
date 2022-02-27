@@ -18,13 +18,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <asp:PlaceHolder ID="PrivatePlaceHolder" runat="server">
-                    <li id="home" runat="server"><a href="Home.aspx"><i class="fa fa-home fa-lg"></i>Home</a></li>
-                    <li id="logout" runat="server"><a href="Logout.aspx"><i class="fa fa-sign-out fa-lg"></i>Logout</a></li>
+                    <li id="home" runat="server"><a href="Home.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                    <li id="logout" runat="server"><a href="Logout.aspx"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                 </asp:PlaceHolder>
                 <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
-                    <li id="signin" runat="server"><a href="Signin.aspx"><i class="fa fa-user fa-lg"></i>Sign in</a></li>
-                    <li id="signup" runat="server"><a href="Signup.aspx"><i class="fa fa-edit fa-lg"></i>Sign up</a></li>
-                    <li id="about" runat="server"><a href="About.aspx"><i class="fa fa-info fa-lg"></i>About</a></li>
+                    <li id="signin" runat="server"><a href="Signin.aspx"><i class="fa fa-user fa-lg"></i> Sign in</a></li>
+                    <li id="signup" runat="server"><a href="Signup.aspx"><i class="fa fa-edit fa-lg"></i> Sign up</a></li>
+                    <li id="about" runat="server"><a href="About.aspx"><i class="fa fa-info fa-lg"></i> About</a></li>
                 </asp:PlaceHolder>
             </ul>
         </div>
