@@ -40,6 +40,9 @@ namespace Flashminder.Custom_User_Controls
                 case "Home Page":
                     home.Attributes.Add("class", "active");
                     break;
+                case "Dashboard Page":
+                    dashboard.Attributes.Add("class", "active");
+                    break;
                 case "Sign in":
                     signin.Attributes.Add("class", "active");
                     break;

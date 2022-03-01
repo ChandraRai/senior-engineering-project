@@ -26,11 +26,13 @@ namespace Flashminder
             using (DefaultConnection db = new DefaultConnection())
             {
                 // query USERS table using EF and LINQ
-                var allUsers = (from Users in db.USERS select Users);
-               
+                var allUsers = (from Users in db.USERS select Users);               
 
                 foreach (var user in allUsers)
                 {
+                    // @Emily Dashboard section Form authentication 
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
+
                     // Verify Username and Password
                     if (user.Username == UserNameTextBox.Text
                         && user.Password == Sha1(Salt(PasswordTextBox.Text)))

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewDashboard.aspx.cs" Inherits="Flashminder.ViewDashboard" %>
+﻿<%@ Page Title="Dashboard Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewDashboard.aspx.cs" Inherits="Flashminder.ViewDashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<script type="text/javascript" src="Scripts/jquery-2.2.3.js"></script>
 	<script type="text/javascript" src="Scripts/chart.js"></script>

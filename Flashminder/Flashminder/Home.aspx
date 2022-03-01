@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-offset-4 col-md-4">
                 <div class="text-right">
-                    <asp:Button runat="server" ID="Quiz" CssClass="btn btn-info" Text="Start Quiz" />
+                    <asp:Button runat="server" ID="Quiz" CssClass="btn btn-info" Text="Start Quiz" OnClick="StartQuiz_Click"/>
                 </div>
             </div>
         </div>

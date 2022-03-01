@@ -66,5 +66,10 @@ namespace Flashminder
                 return myUser;
             }
         }
+
+        protected void StartQuiz_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewQuiz.aspx");
+        }
     }
 }

@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="About.aspx"><i class="fa fa-book fa-lg"></i>Flashminder</a>
+            <a class="navbar-brand" href="About.aspx"><i class="fa fa-book fa-lg"></i> Flashminder</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,6 +19,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <asp:PlaceHolder ID="PrivatePlaceHolder" runat="server">
                     <li id="home" runat="server"><a href="Home.aspx"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                    <li id="dashboard" runat="server"><a href="ViewDashboard.aspx"><i class="fa fa-bar-chart fa-lg"></i> Dashboard</a></li>
                     <li id="logout" runat="server"><a href="Logout.aspx"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                 </asp:PlaceHolder>
                 <asp:PlaceHolder ID="PublicPlaceHolder" runat="server">
