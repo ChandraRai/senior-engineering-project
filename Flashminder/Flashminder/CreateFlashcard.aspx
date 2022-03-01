@@ -8,7 +8,9 @@
 		function OpenPopup() {
 
             var newWindow = window.open("CreateCategory.aspx", "List", "toolbar=no, location=no,status=yes,menubar=no,scrollbars=yes,resizable=yes, width=500,height=300,left=430,top=100");
-            newWindow.onbeforeunload = function () { location.reload() }
+			newWindow.onbeforeunload = function () {
+				window.location.href = window.location.href;
+            }
 
             return false;
 		}

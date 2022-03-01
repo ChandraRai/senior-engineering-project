@@ -37,6 +37,7 @@ namespace Flashminder
                     if (user.Username == UserNameTextBox.Text
                         && user.Password == Sha1(Salt(PasswordTextBox.Text)))
                     {
+                        System.Web.Security.FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                         Session["CurrentUser"] = UserNameTextBox.Text;
                         Response.Cookies["userName"].Value = UserNameTextBox.Text;
 
