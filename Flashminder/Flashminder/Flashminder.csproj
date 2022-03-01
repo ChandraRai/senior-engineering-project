@@ -148,7 +148,6 @@
     <Content Include="ViewFlashcard.aspx" />
     <Content Include="ViewFlashcards.aspx" />
     <Content Include="ViewQuiz.aspx" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">

@@ -38,7 +38,7 @@ namespace Flashminder
 
         protected void RedirectToStartQuiz(object sender, EventArgs e)
         {
-            Response.Redirect("~/ViewQuiz.aspx?CategoryName=" + category_dropdownlist.SelectedValue.ToString());
+            Response.Redirect("~/ViewQuiz.aspx?CategoryName=" + category_dropdownlist.SelectedItem.ToString());
         }
 
         protected void RedirectToQuizSettings(object sender, EventArgs e)

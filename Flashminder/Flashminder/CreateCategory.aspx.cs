@@ -64,15 +64,17 @@ namespace Flashminder
                 string user = HttpContext.Current.User.Identity.Name;
                 if (!string.IsNullOrEmpty(user))
                 {
+                    int userInt = int.Parse(user);
                     Category category = new Category();
                     // check if name already exists
-                    if (db.Categories.Any( c => c.CategoryName == categoryName_txtbx.Text))
+                    if (db.Categories.Any( c => c.CategoryName == categoryName_txtbx.Text && c.UserId == userInt))
                     {
                         ShowMessage("Category name is already in the database", WarningType.Warning);
+                        return;
                     }
                     category.CategoryName = categoryName_txtbx.Text;
                     category.CategoryDesc = categoryDesc_txtbx.Text;
-                    category.UserId = int.Parse(user);
+                    category.UserId = userInt;
                     category.CreatedDate = DateTime.Now;
                     db.Categories.Add(category);
                    int ret =  db.SaveChanges();
