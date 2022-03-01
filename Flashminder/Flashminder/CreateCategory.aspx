@@ -1,15 +1,22 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="CreateCategory.aspx.cs" Inherits="Flashminder.CreateCategory" %>
 
 <!DOCTYPE html>
-<link rel="stylesheet" href="Content/bootstrap.css"/>
-
 <html>
-    <head>
+    <head runat="server">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Create Category</title>
+
+        <!-- CSS Section --> 
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />  
+        <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="Content/font-awesome.min.css" rel="stylesheet" />
+        <link href="Content/app.css" rel="stylesheet" />
     </head>
-    <script type="text/javascript" src="Scripts/jquery-2.2.3.js"></script>
-    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
-    <script type="text/javascript">
+
+        <script type="text/javascript" src="Scripts/jquery-2.2.3.js"></script>
+        <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+        <script type="text/javascript">
 
 		function ShowMessage(msg, type) {
 			$("#MessagePanel").html('<div class="message_pnl"><a href="#" class ="close" data-dismiss="alert" aria-label="close">&times;</a><span>' + msg + '</span></div>')
@@ -36,15 +43,15 @@
 
 			return ret;
 		}
-
 	</script>
+
     <body>
         <div class="container">
                 <div class="row">                    
-                    <div class="col-md-offset-2  col-md-6">
+                    <div class="col-md-7">
                     <form runat="server">
-                    <div id="MessagePanel" style="padding-bottom:25px">
-                        <asp:Panel ID="message_pnl" CssClass="message_pnl" runat="server" >
+                    <div id="MessagePanel" >
+                        <asp:Panel ID="message_pnl" runat="server" >
                             <a href="#" class ="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
                             <asp:Label ID="message_lbl" CssClass="message_lbl" runat="server" />
                         </asp:Panel>
@@ -60,7 +67,7 @@
                     </div>
                     <div>
                         <br />
-                        <asp:Button ID="create_btn" runat="server" Text="Create Category" OnClick="CreateCategoryDB" OnClientClick="return ValidateForm()"/>
+                        <asp:Button ID="create_btn" CssClass="btn btn-primary" runat="server" Text="Create Category" OnClick="CreateCategoryDB" OnClientClick="return ValidateForm()"/>
                     </div>
                     </form>
                 </div>

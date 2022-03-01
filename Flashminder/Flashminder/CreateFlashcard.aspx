@@ -80,33 +80,44 @@
 	</script>
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2  col-md-6">
-                <div id="MessagePanel" style="padding-bottom:25px">
-                    <asp:Panel ID="message_pnl" CssClass="message_pnl" runat="server" >
-                        <a href="#" class ="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
+            <div class="col-md-offset-2 col-md-8">
+                <div id="MessagePanel">
+                    <asp:Panel ID="message_pnl" CssClass="message_pnl" runat="server">
+                        <a href="#" class="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
                         <asp:Label ID="message_lbl" CssClass="message_lbl" runat="server" />
                     </asp:Panel>
                 </div>
-                <div>
+
+                <div class="well well-lg">
                     <asp:Label ID="category_lbl" runat="server">Category: </asp:Label>
-                    <asp:DropDownList ID="category_dropdownlist" runat="server" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true" ></asp:DropDownList>
-                    <button type="button" ID="createCategory_btn" OnClick="OpenPopup()">Create Category</button>
+                    <asp:DropDownList ID="category_dropdownlist" runat="server" CssClass="btn btn-default dropdown-toggle" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true"></asp:DropDownList>
+
+                    <button type="button" id="createCategory_btn" class="btn btn-warning" onclick="OpenPopup()"><i class="fa fa-plus" aria-hidden="true"> Create Category</i></button>
                 </div>
-                <div>
-                    <asp:Label ID="front_lbl" runat="server">Front</asp:Label>
-                    <asp:FileUpload id="front_upload" CssClass="front_upload" runat="server" OnChange="readURLFront(this)"/>
-                    <img id="front_img" src="//:0" style="height:100px;width:200px"/>
-                    <br />
-                    <asp:TextBox ID="front_txtbx" CssClass="front_txtbx" runat="server" TextMode="MultiLine" placeholder="Enter text here..."></asp:TextBox>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!--<asp:Label ID="front_lbl" runat="server">Front</asp:Label>-->
+                        <h4 class="text-left">Front</h4>
+                        <asp:FileUpload ID="front_upload" runat="server" OnChange="readURLFront(this)" CssClass="btn btn-default" />
+                        <img id="front_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" />
+                        <br />
+                        <asp:TextBox ID="front_txtbx" CssClass="form-control" runat="server" TextMode="MultiLine" placeholder="Enter text here"></asp:TextBox>
+                    </div>
                 </div>
-                <div>
-                    <asp:Label ID="back_lbl" runat="server">Back</asp:Label>
-                    <asp:FileUpload id="back_upload" CssClass="back_upload" runat="server" OnChange="readURLBack(this)"/>
-                    <img id="back_img" src="//:0" style="height:100px;width:200px"/>
-                    <br />
-                    <asp:TextBox ID="back_txtbx" CssClass="back_txtbx" runat="server" TextMode="MultiLine" placeholder="Enter text here..."></asp:TextBox>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!--<asp:Label ID="back_lbl" runat="server">Back</asp:Label>-->
+                         <h4 class="text-left">Back</h4>
+                        <asp:FileUpload ID="back_upload" runat="server" OnChange="readURLBack(this)" CssClass="btn btn-default" />
+                        <img id="back_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" />
+                        <br />
+                        <asp:TextBox ID="back_txtbx" CssClass="form-control" runat="server" TextMode="MultiLine" placeholder="Enter text here..."></asp:TextBox>
+                    </div>
                 </div>
-                <asp:Button ID="create_btn" runat="server" Text="Create Flashcard" OnClientClick="return ValidateForm()" OnClick="CreateFlashCard" UseSubmitBehavior="true" />
+                <asp:Button ID="create_btn" runat="server" CssClass="btn btn-primary" Text="Create Flashcard" OnClientClick="return ValidateForm()" OnClick="CreateFlashCard" UseSubmitBehavior="true" />
+                <asp:Button ID="ButtonCancel" runat="server" CssClass="btn btn-warning" Text="Cancel" OnClick="CreateFlashCard" />
             </div>
         </div>
     </div>

@@ -20,12 +20,13 @@
                 }
             }
 
-            $("#statistics").html("<p>Very Easy: " + veryEasy + "</p>" +
-                "<p>Easy: " + easy + "</p>" +
-                "<p>Moderate: " + moderate + "</p>" +
-                "<p>Hard: " + hard + "</p>" +
-                "<p>Very Hard: " + veryHard + "</p>" +
-                categoriesHTML
+            $("#statistics").html("<p>Very Easy: " + "<span class='badge'>" + veryEasy + "</span>" + "</p>" +
+                "<p>Easy: " + "<span class='badge'>" + easy + "</span>" + "</p>" +
+                "<p>Moderate: " + "<span class='badge'>" + moderate + "</span>" + "</p>" +
+                "<p>Hard: " + "<span class='badge'>" + hard + "</span>" + "</p>" +
+                "<p>Very Hard: " + "<span class='badge'>" + veryHard + "</span>" + "</p>" +
+                "<br/>Questions done per Category:" + "<span class='badge'>" +
+                categoriesHTML + "</span>"
             );
 
             const context = document.getElementById('statisticsChart').getContext('2d');
@@ -54,19 +55,14 @@
 </asp:Content>
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">   
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="jumbotron">
                     <h2 runat="server">Learning Graph</h2>
                     <hr />
-                    <div class="text-right">
-                        <asp:Label ID="category_lbl" runat="server">Category: </asp:Label>
-                        <asp:DropDownList ID="category_dropdownlist" runat="server" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true">
-                            <asp:ListItem Selected="True" Text="All" Value="All"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
+
                     <div id="graph">
                         <canvas id="statisticsChart" width="400" height="400"></canvas>
                     </div>
@@ -76,18 +72,25 @@
                     <asp:Button ID="ViewFlashcards" CssClass="btn btn-info" runat="server" Text="View Flashcards" OnClick="RedirectToViewFlashcards" />
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="panel-title"><h4>Questions Done Per Category</h4></div>
+                        <div class="panel-title">
+                            <h4>Statistics</h4>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div id="statistics"></div>
                     </div>
                 </div>
                 <div>
-                    <asp:Button ID="StartQuiz" runat="server" CssClass="btn btn-primary" Text="Start Quiz" OnClick="RedirectToStartQuiz" />
-                    <asp:Button ID="QuizSettings" runat="server" Text="Quiz Settings" CssClass="btn btn-warning" OnClick="RedirectToQuizSettings" />
+                    <asp:Label ID="category_lbl" runat="server">Category: </asp:Label>
+                    <asp:DropDownList ID="category_dropdownlist" CssClass="btn btn-default dropdown-toggle" runat="server" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true">
+                        <asp:ListItem Selected="True" Text="All" Value="All"></asp:ListItem>
+                    </asp:DropDownList>
+
+                    <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Start Quiz" OnClick="RedirectToStartQuiz" />
+                    <asp:Button ID="Button2" runat="server" Text="Quiz Settings" CssClass="btn btn-warning" OnClick="RedirectToQuizSettings" />
                 </div>
             </div>
         </div>
