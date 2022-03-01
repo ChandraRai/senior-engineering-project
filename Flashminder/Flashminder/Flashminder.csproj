@@ -136,6 +136,7 @@
       <DependentUpon>FlashminderModel.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="fonts\DancingScript-Regular.ttf" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />

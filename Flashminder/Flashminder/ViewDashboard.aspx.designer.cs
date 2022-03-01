@@ -7,31 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Flashminder
-{
-
-
-    public partial class ViewDashboard
-    {
-
-        /// <summary>
-        /// CreateFlashcards control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateFlashcards;
-
-        /// <summary>
-        /// ViewFlashcards control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ViewFlashcards;
-
+namespace Flashminder {
+    
+    
+    public partial class ViewDashboard {
+        
         /// <summary>
         /// category_lbl control.
         /// </summary>
@@ -40,7 +20,7 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label category_lbl;
-
+        
         /// <summary>
         /// category_dropdownlist control.
         /// </summary>
@@ -49,7 +29,25 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList category_dropdownlist;
-
+        
+        /// <summary>
+        /// CreateFlashcards control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CreateFlashcards;
+        
+        /// <summary>
+        /// ViewFlashcards control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ViewFlashcards;
+        
         /// <summary>
         /// StartQuiz control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button StartQuiz;
-
+        
         /// <summary>
         /// QuizSettings control.
         /// </summary>
