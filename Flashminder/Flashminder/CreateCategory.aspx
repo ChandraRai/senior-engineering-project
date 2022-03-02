@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="CreateCategory.aspx.cs" Inherits="Flashminder.CreateCategory" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head runat="server">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

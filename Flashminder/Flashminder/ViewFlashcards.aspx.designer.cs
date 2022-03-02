@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Flashminder
-{
-
-
-    public partial class ViewFlashcards
-    {
-
+namespace Flashminder {
+    
+    
+    public partial class ViewFlashcards {
+        
         /// <summary>
         /// category_lbl control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label category_lbl;
-
+        
         /// <summary>
         /// category_dropdownlist control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList category_dropdownlist;
-
+        
         /// <summary>
         /// flashcards_datalist control.
         /// </summary>

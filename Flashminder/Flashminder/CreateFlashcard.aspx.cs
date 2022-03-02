@@ -152,7 +152,7 @@ namespace Flashminder
                     int ret = db.SaveChanges();
                     if (ret > 0)
                     {
-                        Session.Add("ResultMessage", "Successfully created flashcard");
+                        Session.Add("ResultMessage", "Successfully created flashcard.");
                         Session.Add("ResultType", "Sucess");
                         Response.Redirect(Request.Url.AbsoluteUri);
                     }
@@ -166,6 +166,11 @@ namespace Flashminder
             {
                 ShowMessage("User is not logged in.", WarningType.Danger);
             }
+        }
+
+        protected void RedirectToViewDashboard(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewDashboard.aspx");
         }
     }
 }
