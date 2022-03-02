@@ -20,7 +20,7 @@
 
     /* This container is needed to position the front and back side */
     .flip-card-inner {
-        position: relative;
+        position: absolute;
         width: 100%;
         height: 100%;
         text-align: center;
@@ -43,14 +43,18 @@
 
     /* Style the front side (fallback if image is missing) */
     .flip-card-front {
-        background-color: powderblue;
-        color: black;
+        margin-top: 25px;
+        background-color: black;
+        color: white;
+        border-radius: 20px;
     }
 
     /* Style the back side */
     .flip-card-back {
-        background-color: grey;
+        margin-top: 25px;
+        background-color: black;
         color: white;
+        border-radius: 20px;
     }
 </style>
 
@@ -68,30 +72,37 @@
             }
         });
     });
+</script>
 
-
-	</script>
 <body>
     <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="front-card flip-card-front">
+                            <div class="front-image ">
+                                <asp:Image ID="front_image" Style="margin-top: 25px;" runat="server" Height="300" Width="500" />
+                            </div>
+                            <div class="front-text">
+                                <asp:Literal ID="front_text" runat="server"></asp:Literal>
+                            </div>
+                        </div>
+                        <div class="back-card flip-card-back flip">
+                            <div class="back-image ">
+                                <asp:Image Style="margin-top: 25px;" ID="back_image" runat="server" Height="300" Width="500" />
+                            </div>
+                            <div class="back-text">
+                                <asp:Literal ID="back_text" runat="server"></asp:Literal>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="front-card flip-card-front">
-                    <div class="front-image ">
-                        <asp:Image ID="front_image" runat="server" Height="300" Width="500" />
-                    </div>
-                    <div class="front-text">
-                        <asp:Literal ID="front_text" runat="server"></asp:Literal>
-                    </div>
+                <div class="text-left" style="margin-top: 40px;">
+                    <a href="ViewFlashcards.aspx" class="btn btn-default">Back</a>
                 </div>
-                <div class="back-card flip-card-back flip">
-                    <div class="back-image ">
-                        <asp:Image ID="back_image" runat="server" Height="300" Width="500" />
-                    </div>
-                    <div class="back-text">
-                        <asp:Literal ID="back_text" runat="server"></asp:Literal>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

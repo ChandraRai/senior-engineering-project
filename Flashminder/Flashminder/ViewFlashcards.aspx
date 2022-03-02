@@ -51,6 +51,9 @@
                         </div>
                     </ItemTemplate>
                 </asp:DataList>
+                <div class="col-md-8" style="margin-top:40px;">
+                    <a href="ViewDashboard.aspx" class="btn btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"> Back to Dashboard</i></a>
+                </div>
             </div>
         </div>
     </div>

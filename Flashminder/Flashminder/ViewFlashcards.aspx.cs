@@ -23,7 +23,7 @@ namespace Flashminder
                     {
                         category_dropdownlist.DataSource = db.Categories.Where(cat => cat.UserId == userInt).ToList();
                         category_dropdownlist.DataBind();
-                    }            
+                    }
                     LoadFlashcards(user, category_dropdownlist.SelectedValue);
                 }
             }
@@ -43,5 +43,6 @@ namespace Flashminder
                 flashcards_datalist.DataBind();
             }
         }
+
     }
 }
