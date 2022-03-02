@@ -28,16 +28,16 @@
 		function ValidateForm() {
 			var ret = true;
 			if (!$(".categoryName_txtbx").val()) {
-				ShowMessage("Category name must be present", "warning");
+				ShowMessage("Category name must be present.", "warning");
 				ret = false;
 			}
 
 			if ($(".categoryName_txtbx").val() && $(".categoryName_txtbx").val().length > 100) {
-				ShowMessage("Category name can only be 100 characters", "warning");
+				ShowMessage("Category name can only be 100 characters.", "warning");
 				ret = false;
 			}
 			if ($(".categoryDesc_txtbx").val() && $(".categoryDesc_txtbx").val().length > 500) {
-				ShowMessage("Category description can only be 500 characters", "warning");
+				ShowMessage("Category description can only be 500 characters.", "warning");
 				ret = false;
 			}
 
@@ -46,32 +46,30 @@
 	</script>
 
     <body>
-        <div class="container">
-                <div class="row">                    
-                    <div class="col-md-7">
-                    <form runat="server">
-                    <div id="MessagePanel" >
-                        <asp:Panel ID="message_pnl" runat="server" >
-                            <a href="#" class ="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form runat="server">
+                    <div id="MessagePanel">
+                        <asp:Panel ID="message_pnl" runat="server">
+                            <a href="#" class="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
                             <asp:Label ID="message_lbl" CssClass="message_lbl" runat="server" />
                         </asp:Panel>
-                        <asp:Label ID="success_lbl" runat="server" Visible ="false"> Successfully created category.</asp:Label>
+                        <asp:Label ID="success_lbl" runat="server" Visible="false"> Successfully created category.</asp:Label>
                     </div>
-                    <div>
-                        <asp:Label ID="categoryName_lbl" CssClass="categoryName_lbl" runat="server">Category Name</asp:Label>
+                    <div class="well well-sm">
+                        <asp:Label ID="categoryName_lbl" CssClass="categoryName_lbl" runat="server"><h5>Category Name:</h5></asp:Label>
                         <asp:TextBox ID="categoryName_txtbx" CssClass="categoryName_txtbx" runat="server"></asp:TextBox>
+                    
+                        <asp:Label ID="categoryDesc_lbl" CssClass="categoryDesc_lbl" runat="server"><h5>Category Description:</h5></asp:Label>
+                        <asp:TextBox ID="categoryDesc_txtbx" CssClass="categoryDesc_txtbx" runat="server" TextMode="MultiLine"></asp:TextBox>
                     </div>
-                    <div>
-                        <asp:Label ID="categoryDesc_lbl" CssClass="categoryDesc_lbl" runat="server">Category Description</asp:Label>
-                        <asp:TextBox ID="categoryDesc_txtbx"  CssClass="categoryDesc_txtbx" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <div>                       
+                        <asp:Button ID="create_btn" CssClass="btn btn-primary" runat="server" Text="Create Category" OnClick="CreateCategoryDB" OnClientClick="return ValidateForm()" />
                     </div>
-                    <div>
-                        <br />
-                        <asp:Button ID="create_btn" CssClass="btn btn-primary" runat="server" Text="Create Category" OnClick="CreateCategoryDB" OnClientClick="return ValidateForm()"/>
-                    </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

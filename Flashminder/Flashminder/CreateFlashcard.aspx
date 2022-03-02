@@ -107,7 +107,7 @@
                     <asp:Label ID="category_lbl" runat="server">Category: </asp:Label>
                     <asp:DropDownList ID="category_dropdownlist" runat="server" CssClass="btn btn-default dropdown-toggle" DataTextField="CategoryName" DataValueField="Id" AppendDataBoundItems="true"></asp:DropDownList>
 
-                    <button type="button" id="createCategory_btn" class="btn btn-warning" onclick="OpenPopup()"><i class="fa fa-plus" aria-hidden="true">Create Category</i></button>
+                    <button type="button" id="createCategory_btn" class="btn btn-warning" onclick="OpenPopup()"><i class="fa fa-plus" aria-hidden="true"> Create Category</i></button>
                 </div>
 
                 <div class="panel panel-default">
