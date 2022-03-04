@@ -15,6 +15,7 @@ namespace Flashminder
             {
 
                 Session.Remove("CurrentUser");
+                System.Web.Security.FormsAuthentication.SetAuthCookie("", false);
 
                 // Redirect to About Page
                 Response.Redirect("~/About.aspx");

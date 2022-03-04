@@ -30,8 +30,6 @@ namespace Flashminder
 
                 foreach (var user in allUsers)
                 {
-                    // @Emily Dashboard section Form authentication 
-                    System.Web.Security.FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
 
                     // Verify Username and Password
                     if (user.Username == UserNameTextBox.Text
