@@ -117,7 +117,8 @@ namespace Flashminder
                     algData.NextPratice = DateTime.Now;
 
                     relation.Flashcard = flashcard;
-                    relation.CategoryId = int.Parse(category_dropdownlist.SelectedValue);
+                    int selectedCategory = db.Categories.Where(cat => (cat.CategoryName == category_dropdownlist.SelectedItem.Text)).FirstOrDefault().Id;
+                    relation.CategoryId = selectedCategory;
                     relation.UserID = userInt;
                     flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
                     flashcard.UserId = userInt;

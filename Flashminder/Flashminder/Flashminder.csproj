@@ -95,6 +95,7 @@
     <Content Include="CreateTables.sql" />
     <Content Include="Custom_User_Controls\Jumbotron.ascx" />
     <Content Include="Custom_User_Controls\Navbar.ascx" />
+    <Content Include="EditFlashcard.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -187,6 +188,13 @@
     </Compile>
     <Compile Include="DatabaseAccessors.cs" />
     <Compile Include="DatabaseMutators.cs" />
+    <Compile Include="EditFlashcard.aspx.cs">
+      <DependentUpon>EditFlashcard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditFlashcard.aspx.designer.cs">
+      <DependentUpon>EditFlashcard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
