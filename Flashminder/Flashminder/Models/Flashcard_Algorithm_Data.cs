@@ -15,12 +15,13 @@ namespace Flashminder.Models
     public partial class Flashcard_Algorithm_Data
     {
         public int Id { get; set; }
-        public int FlashcardId { get; set; }
+        public Nullable<int> FlashcardId { get; set; }
         public double Easiness { get; set; }
         public int Interval { get; set; }
         public byte Quality { get; set; }
         public System.DateTime NextPratice { get; set; }
         public int Repetitions { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         public virtual Flashcard Flashcard { get; set; }
     }

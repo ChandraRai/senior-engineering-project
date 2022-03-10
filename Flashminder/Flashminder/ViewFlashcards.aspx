@@ -8,12 +8,25 @@
                 var target = $(e.currentTarget).context;
                 if (target.classList.contains('flashcard')) {
                     if (target.children[0].innerText) {
-                        window.location.href = 'ViewFlashcard.aspx?FlashcardID=' + target.children[0].innerText;
+                        window.location.href = 'EditFlashcard.aspx?FlashcardID=' + target.children[0].innerText;// this should be the flashcard id element
                     }
                 }
             });
+            $('#delete_btn').click(function (e) {
+                if (confirm('Are you sure you want to delete this item?')) {
+                    $.ajax({
+                        url: '/api/flashcard/' + e.currentTarget.parentElement.parentElement.firstElementChild.innerText,
+						type: 'DELETE',
+                        success: function (response) {
+							window.location.href = 'ViewFlashcards.aspx';
+						}
+                    });
+					window.location.href = 'ViewFlashcards.aspx';
+                }
+            });
+
         });
-    </script>
+	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -46,7 +59,7 @@
                                 <%# Eval("BackText")%>
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-danger" style="margin-top: 20px;" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-minus" aria-hidden="true"> Delete</i></button>
+                                <button id="delete_btn" class="btn btn-danger" style="margin-top: 20px;"><i class="fa fa-minus" aria-hidden="true" > Delete</i></button>
                             </div>
                         </div>
                     </ItemTemplate>

@@ -17,6 +17,7 @@ namespace Flashminder.Models
         public Nullable<int> UserID { get; set; }
         public int CategoryId { get; set; }
         public int FlashcardId { get; set; }
+        public Nullable<System.DateTime> ModifiedDate { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual USERS USER { get; set; }

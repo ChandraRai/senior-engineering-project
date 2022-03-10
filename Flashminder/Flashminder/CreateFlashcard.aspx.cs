@@ -103,64 +103,32 @@ namespace Flashminder
             int userInt = int.Parse(user);
             if (!string.IsNullOrEmpty(user))
             {
-                // Connect to EF
-                using (DefaultConnection db = new DefaultConnection())
+                string frontImage = "";
+                string backImage = "";
+                if (!string.IsNullOrEmpty(front_upload.FileName))
                 {
-                    Flashcard flashcard = new Flashcard();
-                    Flashcard_Category relation = new Flashcard_Category(); // set flashcard 2 category too
-                    Flashcard_Algorithm_Data algData = new Flashcard_Algorithm_Data();
-                    algData.Easiness = 2.5;
-                    algData.Flashcard = flashcard;
-                    algData.Interval = 1;
-                    algData.Quality = 0;
-                    algData.Repetitions = 0;
-                    algData.NextPratice = DateTime.Now;
-
-                    relation.Flashcard = flashcard;
-                    int selectedCategory = db.Categories.Where(cat => (cat.CategoryName == category_dropdownlist.SelectedItem.Text)).FirstOrDefault().Id;
-                    relation.CategoryId = selectedCategory;
-                    relation.UserID = userInt;
-                    flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
-                    flashcard.UserId = userInt;
-                    flashcard.FrontImage = "";
-                    flashcard.BackImage = "";
-                    if (front_txtbx.Text.Length <= MAX_CARD_TEXT)
-                    {
-                        flashcard.FrontText = front_txtbx.Text; // clean?
-                    }
-                    if (back_txtbx.Text.Length <= MAX_CARD_TEXT)
-                    {
-                        flashcard.BackText = back_txtbx.Text;
-                    }
-                    if (!string.IsNullOrEmpty(front_upload.FileName))
-                    {
-                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                        string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
-                        front_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_front_" + filetype));
-                        flashcard.FrontImage = user + "_" + fileName + "_front_" + filetype;
-                    }
-                    if (!string.IsNullOrEmpty(back_upload.FileName))
-                    {
-                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                        string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
-                        back_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_back_" + filetype));
-                        flashcard.BackImage = user + "_" + fileName + "_back_" + filetype;
-                    }
-                    flashcard.CreatedDate = DateTime.Now;
-                    db.Flashcards.Add(flashcard);
-                    db.Flashcard_Category.Add(relation);
-                    db.Flashcard_Algorithm_Data.Add(algData);
-                    int ret = db.SaveChanges();
-                    if (ret > 0)
-                    {
-                        Session.Add("ResultMessage", "Successfully created flashcard.");
-                        Session.Add("ResultType", "Sucess");
-                        Response.Redirect(Request.Url.AbsoluteUri);
-                    }
-                    else
-                    {
-                        ShowMessage("Unable to create flashcard", WarningType.Warning);
-                    }
+                    string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                    string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
+                    front_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_front_" + filetype));
+                    frontImage = user + "_" + fileName + "_front_" + filetype;
+                }
+                if (!string.IsNullOrEmpty(back_upload.FileName))
+                {
+                    string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                    string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
+                    back_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_back_" + filetype));
+                    backImage = user + "_" + fileName + "_back_" + filetype;
+                }
+                int ret = DatabaseMutators.CreateFlashcard(userInt, category_dropdownlist.SelectedItem.Text, front_txtbx.Text, back_txtbx.Text, frontImage, backImage);
+                if (ret > 0)
+                {
+                    Session.Add("ResultMessage", "Successfully created flashcard.");
+                    Session.Add("ResultType", "Sucess");
+                    Response.Redirect(Request.Url.AbsoluteUri);
+                }
+                else
+                {
+                    ShowMessage("Unable to create flashcard", WarningType.Warning);
                 }
             }
              else

@@ -14,18 +14,20 @@ namespace Flashminder
         protected void Page_Load(object sender, EventArgs e)
         {
             string user = HttpContext.Current.User.Identity.Name;
-            if (!IsPostBack)
+
+            if (!string.IsNullOrEmpty(user))
             {
-                if (!string.IsNullOrEmpty(user))
+                int userInt = Int32.Parse(user);
+                if (!IsPostBack)
                 {
-                    int userInt = Int32.Parse(user);
                     using (DefaultConnection db = new DefaultConnection())
                     {
                         category_dropdownlist.DataSource = db.Categories.Where(cat => cat.UserId == userInt).ToList();
                         category_dropdownlist.DataBind();
                     }
-                    LoadFlashcards(user, category_dropdownlist.SelectedValue);
                 }
+
+                LoadFlashcards(user, category_dropdownlist.SelectedValue);
             }
         }
 
