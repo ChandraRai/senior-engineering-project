@@ -16,20 +16,20 @@
 
         function ValidateForm() {
             var ret = true;
-            if (!$(".front_txtbx").val() && !$(".front_upload").val()) {
+			if (!$("#MainContent_front_txtbx").val() && !$("#MainContent_front_upload").val()) {
                 ShowMessage("Front of the card needs text or an image", "warning");
                 ret = false;
             }
-            if ((!$(".back_txtbx").val() && !$(".back_upload").val())) {
+			if ((!$("#MainContent_back_txtbx").val() && !$("#MainContent_back_upload").val())) {
                 ShowMessage("Back of the card needs text or an image", "warning");
                 ret = false;
             }
 
-            if ($(".front_txtbx").val() && $(".front_txtbx").val().length > 500) {
+			if ($("#MainContent_front_txtbx").val() && $("#MainContent_front_txtbx").val().length > 500) {
                 ShowMessage("Text can only be 500 characters", "warning");
                 ret = false;
             }
-            if ($(".back_txtbx").val() && $(".back_txtbx").val().length > 500) {
+			if ($("#MainContent_back_txtbx").val() && $("#MainContent_back_txtbx").val().length > 500) {
                 ShowMessage("Text can only be 500 characters", "warning");
                 ret = false;
             }
@@ -70,15 +70,15 @@
             }
         }
 
-        $(".front_upload").change(function () {
+		$("#MainContent_front_upload").change(function () {
             readURLFront(this);
         });
 
-        $(".back_upload").change(function () {
+		$(".#MainContent_back_upload").change(function () {
             readURLBack(this);
         });
 
-    </script>
+	</script>
 
     <!-- Inline CSS section -->
     <style>

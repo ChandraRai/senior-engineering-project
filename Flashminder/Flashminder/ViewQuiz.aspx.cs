@@ -11,7 +11,6 @@ namespace Flashminder
 {
     public partial class ViewQuiz : System.Web.UI.Page
     {
-        Flashcard curFlashcard;
         Flashcard_Algorithm_Data curData;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,7 +30,7 @@ namespace Flashminder
             {
                 category.Text = "All";
             }
-            curFlashcard = LoadFlashcard(userId, category.Text);
+            LoadFlashcard(userId, category.Text);
             SetButtons();
 
         }
