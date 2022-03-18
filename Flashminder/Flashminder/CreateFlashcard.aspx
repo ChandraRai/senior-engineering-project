@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CreateFlashcard.aspx.cs" Inherits="Flashminder.CreateFlashcard" %>
+﻿<%@ Page Language="C#" Title="Create Flashcard" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CreateFlashcard.aspx.cs" Inherits="Flashminder.CreateFlashcard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript" src="Scripts/jquery-2.2.3.js"></script>

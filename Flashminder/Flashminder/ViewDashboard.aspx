@@ -89,8 +89,8 @@
                         <asp:ListItem Selected="True" Text="All" Value="All"></asp:ListItem>
                     </asp:DropDownList>
 
-                    <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Start Quiz" OnClick="RedirectToStartQuiz" />
-                    <asp:Button ID="Button2" runat="server" Text="Quiz Settings" CssClass="btn btn-warning" OnClick="RedirectToQuizSettings" />
+                    <asp:Button ID="startquiz_btn" runat="server" CssClass="btn btn-primary" Text="Start Quiz" OnClick="RedirectToStartQuiz" />
+                    <asp:Button ID="quizsettings_btn" runat="server" Text="Quiz Settings" CssClass="btn btn-warning" OnClick="RedirectToQuizSettings" />
                 </div>
             </div>
         </div>

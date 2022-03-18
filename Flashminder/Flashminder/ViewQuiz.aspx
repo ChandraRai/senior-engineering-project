@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewQuiz.aspx.cs" Inherits="Flashminder.ViewQuiz" %>
+﻿<%@ Page Title="Quiz" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewQuiz.aspx.cs" Inherits="Flashminder.ViewQuiz" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

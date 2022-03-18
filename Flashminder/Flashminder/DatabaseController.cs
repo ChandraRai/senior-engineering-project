@@ -205,8 +205,6 @@ namespace Flashminder
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-
-            return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Flashminder
             name: "Flashcard",
             routeTemplate: "api/flashcard/{id}",
             defaults: new { controller = "Flashcard" }
-        );
+            );
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Flashminder {
-    
-    
-    public partial class ViewDashboard {
-        
+namespace Flashminder
+{
+
+
+    public partial class ViewDashboard
+    {
+
         /// <summary>
         /// CreateFlashcards control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CreateFlashcards;
-        
+
         /// <summary>
         /// ViewFlashcards control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ViewFlashcards;
-        
+
         /// <summary>
         /// category_lbl control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label category_lbl;
-        
+
         /// <summary>
         /// category_dropdownlist control.
         /// </summary>
@@ -47,23 +49,23 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList category_dropdownlist;
-        
+
         /// <summary>
-        /// Button1 control.
+        /// startquiz_btn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
+        protected global::System.Web.UI.WebControls.Button startquiz_btn;
+
         /// <summary>
-        /// Button2 control.
+        /// quizsettings_btn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button quizsettings_btn;
     }
 }
