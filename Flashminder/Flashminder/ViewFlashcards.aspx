@@ -48,12 +48,12 @@
                         <div class="flashcard" runat="server">
                             <div id="id" class="flashcard-id" hidden="hidden"><%# Eval("Id") %></div>
 
-                            <div class="col-md-4" style="margin-right: 20px; margin-top:20px;">
+                            <div class="col-md-4 front" style="margin-right: 20px; margin-top:20px;">
                                 <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="FrontImage" Visible='<%# Eval("FrontImage") == null ? false : System.IO.File.Exists(Server.MapPath(("Images/"+ Eval("FrontImage").ToString()))) %>' ImageUrl='<%# ("Images/"+ Eval("FrontImage")?.ToString())%>' />
                             
                                 <%# Eval("FrontText")%>
                             </div>
-                            <div class="col-md-4" style="margin-right: 20px; margin-top:20px;">
+                            <div class="col-md-4 back" style="margin-right: 20px; margin-top:20px;">
                                 <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="BackImage" Visible='<%# Eval("BackImage") == null ? false : System.IO.File.Exists(Server.MapPath(("Images/"+ Eval("BackImage").ToString()))) %>' ImageUrl='<%# ("Images/"+ Eval("BackImage")?.ToString())%>' />
                                
                                 <%# Eval("BackText")%>

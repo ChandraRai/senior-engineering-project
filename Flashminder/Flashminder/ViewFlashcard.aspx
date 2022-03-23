@@ -98,11 +98,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="text-left" style="margin-top: 40px;">
-                    <a href="ViewFlashcards.aspx" class="btn btn-default">Back</a>
-                </div>
-
             </div>
         </div>
     </div>

@@ -19,7 +19,6 @@ namespace FlashminderTest
         
         static public int CreateUser(string username, string password)
         {
-            int changes = 0;
             USERS user = new USERS();
             user.Username = username;
             user.Password = Sha1(Salt(password));
@@ -152,9 +151,9 @@ namespace FlashminderTest
             return DatabaseMutators.CreateFlashcard(userId, category, front, back, "", "") > 0;
         }
 
-        static public bool CreateFlashcardWithImages(int userId, string category, string front, string back, Image frontImg, Image backImg)
+        static public bool CreateFlashcardWithImages(int userId, string category, string front, string back, Image frontImg, Image backImg, string serverPath)
         {
-            return DatabaseMutators.CreateFlashcard(userId, category, front, back, frontImg, backImg) > 0;
+            return DatabaseMutators.CreateFlashcard(userId, category, front, back, frontImg, backImg, serverPath) > 0;
         }
 
         static public bool CreateCategory(int userID, string category, string categoryDesc)
@@ -172,5 +171,6 @@ namespace FlashminderTest
             }
             return changes > 0;
         }
+
     }
 }

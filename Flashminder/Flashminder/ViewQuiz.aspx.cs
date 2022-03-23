@@ -4,15 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Newtonsoft.Json;
 using Flashminder.Models;
 
 namespace Flashminder
 {
     public partial class ViewQuiz : System.Web.UI.Page
     {
-        Flashcard_Algorithm_Data curData;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             string userId = HttpContext.Current.User.Identity.Name;
@@ -25,14 +23,15 @@ namespace Flashminder
             {
                 string categoryName = Request.QueryString["CategoryName"];
                 category.Text = categoryName;
+                if (string.IsNullOrEmpty(category.Text))
+                {
+                    category.Text = "All";
+                }
+                LoadFlashcard(userId, category.Text);
             }
-            if (string.IsNullOrEmpty(category.Text))
-            {
-                category.Text = "All";
-            }
-            LoadFlashcard(userId, category.Text);
-            SetButtons();
 
+
+            SetButtons();
         }
 
 
@@ -53,7 +52,8 @@ namespace Flashminder
                 if (dataObj != null)
                 {
                     card = DatabaseAccessors.LoadFlashcard((int)dataObj.FlashcardId, Int32.Parse(userId));
-                    curData = dataObj;
+                    dataObj.Flashcard = null;
+                    Session["curData"] = dataObj;
                 }
                 if (card != null)
                 {
@@ -69,6 +69,7 @@ namespace Flashminder
         {
             // set very easy
             float multiplier = float.Parse(multiplier_dropdown.SelectedValue);
+            Flashcard_Algorithm_Data curData =  (Flashcard_Algorithm_Data)Session["curData"];
             if (curData != null)
             {
                 double days = (LearningAlgorithms.CalculateSM2Alg(5, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now ).TotalDays;
@@ -87,6 +88,8 @@ namespace Flashminder
         protected void ButtonPressed( object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            Flashcard_Algorithm_Data curData = (Flashcard_Algorithm_Data) Session["curData"];
+
             if (curData != null)
             {
                 if(btn.Text.StartsWith("Very Easy"))
@@ -115,7 +118,9 @@ namespace Flashminder
                     DatabaseMutators.UpdateNextDate(curData, float.Parse(multiplier_dropdown.SelectedValue));
                 }
             }
-            
+            string userId = HttpContext.Current.User.Identity.Name;
+
+            LoadFlashcard(userId, category.Text);
         }
 
         protected void DropdownChanged(object sender, EventArgs e)

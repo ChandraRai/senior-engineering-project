@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
+
 
 using Flashminder.Models;
 
@@ -87,7 +89,7 @@ namespace Flashminder
             }
         }
 
-        static public int CreateFlashcard(int userID, string categoryName, string frontText, string backText, Image frontImage, Image backImage)
+        static public int CreateFlashcard(int userID, string categoryName, string frontText, string backText, Image frontImage, Image backImage, string serverPath)
         {
             // Connect to EF
             using (DefaultConnection db = new DefaultConnection())
@@ -122,15 +124,15 @@ namespace Flashminder
                 if (frontImage != null)
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                    string filetype = frontImage.RawFormat.ToString().ToLower();
-                    frontImage.Save("Images/" + userID + "_" + fileName + "_front_" + filetype);
+                    string filetype = "." + frontImage.RawFormat.ToString().ToLower();
+                    frontImage.Save(serverPath+"\\Images\\" + userID + "_" + fileName + "_front_" + filetype, ImageFormat.Png);
                     flashcard.FrontImage = userID + "_" + fileName + "_front_" + filetype;
                 }
                 if (backImage != null)
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                    string filetype = backImage.RawFormat.ToString().ToLower();
-                    backImage.Save("Images/" + userID + "_" + fileName + "_back_" + filetype);
+                    string filetype = "." + backImage.RawFormat.ToString().ToLower();
+                    backImage.Save(serverPath+"\\Images\\" + userID + "_" + fileName + "_back_" + filetype, ImageFormat.Png);
                     flashcard.BackImage = userID + "_" + fileName + "_back_" + filetype;
                 }
 
