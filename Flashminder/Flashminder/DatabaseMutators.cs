@@ -61,12 +61,12 @@ namespace Flashminder
                 algData.Quality = 0;
                 algData.Repetitions = 0;
                 algData.NextPratice = DateTime.Now;
+                algData.UserId = userID;
 
                 relation.Flashcard = flashcard;
                 int selectedCategory = db.Categories.Where(cat => (cat.CategoryName == categoryName)).FirstOrDefault().Id;
                 relation.CategoryId = selectedCategory;
                 relation.UserID = userID;
-                flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
                 flashcard.UserId = userID;
                 flashcard.FrontImage = "";
                 flashcard.BackImage = "";
@@ -89,7 +89,7 @@ namespace Flashminder
             }
         }
 
-        static public int CreateFlashcard(int userID, string categoryName, string frontText, string backText, Image frontImage, Image backImage, string serverPath)
+        static public int CreateFlashcard(int userID, string categoryName, string frontText, string backText, Image frontImage, Image backImage)
         {
             // Connect to EF
             using (DefaultConnection db = new DefaultConnection())
@@ -103,12 +103,12 @@ namespace Flashminder
                 algData.Quality = 0;
                 algData.Repetitions = 0;
                 algData.NextPratice = DateTime.Now;
+                algData.UserId = userID;
 
                 relation.Flashcard = flashcard;
                 int selectedCategory = db.Categories.Where(cat => (cat.CategoryName == categoryName)).FirstOrDefault().Id;
                 relation.CategoryId = selectedCategory;
                 relation.UserID = userID;
-                flashcard.CardType = db.CardTypes.Find(1); // set to default right now, set for different types later
                 flashcard.UserId = userID;
                 flashcard.FrontImage = "";
                 flashcard.BackImage = "";
@@ -125,14 +125,28 @@ namespace Flashminder
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
                     string filetype = "." + frontImage.RawFormat.ToString().ToLower();
-                    frontImage.Save(serverPath+"\\Images\\" + userID + "_" + fileName + "_front_" + filetype, ImageFormat.Png);
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(userID + "_" + fileName + "_front_" + filetype);
+                    MemoryStream ms = new MemoryStream();
+                    frontImage.Save(ms, frontImage.RawFormat);
+                    ms.Position = 0;
+                    using (var stream = ms)
+                    {
+                        blobClient.Upload(stream);
+                    }
                     flashcard.FrontImage = userID + "_" + fileName + "_front_" + filetype;
                 }
                 if (backImage != null)
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
                     string filetype = "." + backImage.RawFormat.ToString().ToLower();
-                    backImage.Save(serverPath+"\\Images\\" + userID + "_" + fileName + "_back_" + filetype, ImageFormat.Png);
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(userID + "_" + fileName + "_back_" + filetype);
+                    MemoryStream ms = new MemoryStream();
+                    backImage.Save(ms, frontImage.RawFormat);
+                    ms.Position = 0;
+                    using (var stream = ms)
+                    {
+                        blobClient.Upload(stream);
+                    }
                     flashcard.BackImage = userID + "_" + fileName + "_back_" + filetype;
                 }
 
@@ -162,6 +176,16 @@ namespace Flashminder
 
                 if (db.SaveChanges() == 3)
                 {
+                    if (!string.IsNullOrEmpty(toRemove.FrontImage))
+                    {
+                        var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(toRemove.FrontImage);
+                        blobClient.Delete();
+                    }
+                    if(!string.IsNullOrEmpty(toRemove.BackImage))
+                    {
+                        var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(toRemove.BackImage);
+                        blobClient.Delete();
+                    }
                     success = true;
                 }
             }

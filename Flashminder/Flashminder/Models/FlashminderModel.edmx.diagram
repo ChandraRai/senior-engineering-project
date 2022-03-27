@@ -6,18 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="520f53b41e214726b17bbe0c40a0a3bb" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="flashminderModel.USERS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="flashminderModel.CardType" Width="1.5" PointX="0.75" PointY="4.5" />
         <EntityTypeShape EntityType="flashminderModel.Category" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="flashminderModel.FK__Category__UserId__61F08603" />
         <EntityTypeShape EntityType="flashminderModel.Flashcard_Category" Width="1.5" PointX="5.25" PointY="3" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__Categ__79C80F94" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__UserI__78D3EB5B" />
         <EntityTypeShape EntityType="flashminderModel.Flashcard" Width="1.5" PointX="3" PointY="0.75" />
-        <AssociationConnector Association="flashminderModel.FK__Flashcard__fk_Ca__3B95D2F1" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__Flash__46136164" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__UserI__3C89F72A" />
         <EntityTypeShape EntityType="flashminderModel.Flashcard_Algorithm_Data" Width="1.5" PointX="7.25" PointY="0.875" />
         <AssociationConnector Association="flashminderModel.FK__Flashcard__Flash__257187A8" />
+        <AssociationConnector Association="flashminderModel.FK__Flashcard__UserI__513AFB4D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

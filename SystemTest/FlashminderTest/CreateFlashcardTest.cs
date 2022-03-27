@@ -209,6 +209,7 @@ namespace FlashminderTest
         [Test]
         public void CreateExistingCategory()
         {
+            Helper.CreateCategory(userID, "Default", "");
             Helper.CreateCategory(userID, "CategoryRepeat", "");
             Assert.IsFalse(CreateCategory("CategoryRepeat", "Description"));
         }

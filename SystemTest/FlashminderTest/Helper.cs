@@ -105,6 +105,18 @@ namespace FlashminderTest
                         {
                             db.Flashcard_Algorithm_Data.Remove(data);
                         }
+
+                        if (!string.IsNullOrEmpty(card.FrontImage))
+                        {
+                            var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(card.FrontImage);
+                            blobClient.Delete();
+                        }
+                        if (!string.IsNullOrEmpty(card.BackImage))
+                        {
+                            var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(card.BackImage);
+                            blobClient.Delete();
+                        }
+
                         db.Flashcards.Remove(card);
                     }
 
@@ -151,9 +163,9 @@ namespace FlashminderTest
             return DatabaseMutators.CreateFlashcard(userId, category, front, back, "", "") > 0;
         }
 
-        static public bool CreateFlashcardWithImages(int userId, string category, string front, string back, Image frontImg, Image backImg, string serverPath)
+        static public bool CreateFlashcardWithImages(int userId, string category, string front, string back, Image frontImg, Image backImg)
         {
-            return DatabaseMutators.CreateFlashcard(userId, category, front, back, frontImg, backImg, serverPath) > 0;
+            return DatabaseMutators.CreateFlashcard(userId, category, front, back, frontImg, backImg) > 0;
         }
 
         static public bool CreateCategory(int userID, string category, string categoryDesc)

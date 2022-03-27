@@ -203,15 +203,13 @@ namespace FlashminderTest
 
             using (DefaultConnection db = new DefaultConnection())
             {
-                USERS user1 = db.USERS.Where(user => (user.Username == "Test1")).FirstOrDefault();
-                if (user1 != null)
+                foreach(USERS user in db.USERS.Where(user => (user.Username == "Test1")))
                 {
-                    db.USERS.Remove(user1);
+                    db.USERS.Remove(user);
                 }
-                USERS user2 = db.USERS.Where(user => (user.Username == "Test2")).FirstOrDefault();
-                if (user2 != null)
+                foreach (USERS user in db.USERS.Where(user => (user.Username == "Test2")))
                 {
-                    db.USERS.Remove(user2);
+                    db.USERS.Remove(user);
                 }
                 db.SaveChanges();
             }

@@ -70,8 +70,8 @@ namespace Flashminder
                         {
                             front_txtbx.Text = flashcard.FrontText;
                             back_txtbx.Text = flashcard.BackText;
-                            current_front_img.ImageUrl = flashcard.FrontImage;
-                            current_back_img.ImageUrl = flashcard.BackImage;
+                            current_front_img.ImageUrl = "https://flashminderfiles.blob.core.windows.net/images/" + flashcard.FrontImage;
+                            current_back_img.ImageUrl = "https://flashminderfiles.blob.core.windows.net/images/" + flashcard.BackImage;
                         }
                     currentFlashcard = flashcard;
                         
@@ -102,47 +102,55 @@ namespace Flashminder
 
         protected void UpdateFlashcard(object sender, EventArgs e)
         {
-                using (DefaultConnection db = new DefaultConnection())
+            using (DefaultConnection db = new DefaultConnection())
+            {
+                Flashcard flashcard = db.Flashcards.Where(card => (card.Id == currentFlashcard.Id)).FirstOrDefault();
+                if (!string.IsNullOrEmpty(front_upload.FileName))
                 {
-                    Flashcard flashcard = db.Flashcards.Where(card => (card.Id == currentFlashcard.Id)).FirstOrDefault();
-                    if (!string.IsNullOrEmpty(front_upload.FileName))
+                    if (File.Exists(flashcard.FrontImage))
                     {
-                        if (File.Exists(flashcard.FrontImage))
-                        {
-                            File.Delete(flashcard.FrontImage);
-                        }
+                        File.Delete(flashcard.FrontImage);
+                    }
 
-                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                        string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
-                        front_upload.SaveAs(Server.MapPath("Images/" + currentFlashcard.UserId + "_" + fileName + "_front_" + filetype));
-                        flashcard.FrontImage = currentFlashcard.UserId + "_" + fileName + "_front_" + filetype;
+                    string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                    string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(currentFlashcard.UserId + "_" + fileName + "_front_" + filetype);
+                    using (var stream = front_upload.FileContent)
+                    {
+                        blobClient.Upload(stream);
+                    }
+                    flashcard.FrontImage = currentFlashcard.UserId + "_" + fileName + "_front_" + filetype;
                         
-                    }
-                    if (!string.IsNullOrEmpty(back_upload.FileName))
-                    {
-                        if (File.Exists(flashcard.BackImage))
-                        {
-                            File.Delete(flashcard.BackImage);
-                        }
-
-                        string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                        string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
-                        back_upload.SaveAs(Server.MapPath("Images/" + flashcard.UserId + "_" + fileName + "_back_" + filetype));
-                        flashcard.BackImage = flashcard.UserId + "_" + fileName + "_back_" + filetype;
-                    }
-                    flashcard.FrontText = front_txtbx.Text;
-                    flashcard.BackText = back_txtbx.Text;
-                    Category selectedCategory = db.Categories.Where(cat => (cat.CategoryName == category_dropdownlist.SelectedItem.Text && cat.UserId == flashcard.UserId )).FirstOrDefault();
-                    int categoryID = flashcard.Flashcard_Category.First().CategoryId;
-                    Flashcard_Category flashcard_category = db.Flashcard_Category.Where(fc => fc.CategoryId == categoryID && fc.FlashcardId == flashcard.Id).FirstOrDefault();
-                    db.Flashcard_Category.Remove(flashcard_category);
-                    Flashcard_Category newRelation = new Flashcard_Category();
-                    newRelation.Category = selectedCategory;
-                    newRelation.Flashcard = flashcard;
-                    newRelation.UserID = flashcard.UserId;
-                    db.Flashcard_Category.Add(newRelation);
-                    db.SaveChanges();                    
                 }
+                if (!string.IsNullOrEmpty(back_upload.FileName))
+                {
+                    if (File.Exists(flashcard.BackImage))
+                    {
+                        File.Delete(flashcard.BackImage);
+                    }
+
+                    string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                    string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(flashcard.UserId + "_" + fileName + "_back_" + filetype);
+                    using (var stream = front_upload.FileContent)
+                    {
+                        blobClient.Upload(stream);
+                    }
+                    flashcard.BackImage = flashcard.UserId + "_" + fileName + "_back_" + filetype;
+                }
+                flashcard.FrontText = front_txtbx.Text;
+                flashcard.BackText = back_txtbx.Text;
+                Category selectedCategory = db.Categories.Where(cat => (cat.CategoryName == category_dropdownlist.SelectedItem.Text && cat.UserId == flashcard.UserId )).FirstOrDefault();
+                int categoryID = flashcard.Flashcard_Category.First().CategoryId;
+                Flashcard_Category flashcard_category = db.Flashcard_Category.Where(fc => fc.CategoryId == categoryID && fc.FlashcardId == flashcard.Id).FirstOrDefault();
+                db.Flashcard_Category.Remove(flashcard_category);
+                Flashcard_Category newRelation = new Flashcard_Category();
+                newRelation.Category = selectedCategory;
+                newRelation.Flashcard = flashcard;
+                newRelation.UserID = flashcard.UserId;
+                db.Flashcard_Category.Add(newRelation);
+                db.SaveChanges();                    
+            }
         }
 
         protected void RemoveFrontImage(object sender, EventArgs e)
@@ -152,10 +160,8 @@ namespace Flashminder
                 using (DefaultConnection db = new DefaultConnection())
                 {
                     Flashcard flashcard = db.Flashcards.Where(card => (card.Id == currentFlashcard.Id)).FirstOrDefault();
-                    if (File.Exists(flashcard.FrontImage))
-                    {
-                        File.Delete(flashcard.FrontImage);
-                    }
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(flashcard.FrontImage);
+                    blobClient.Delete();
                     flashcard.FrontImage = "";
                     db.SaveChanges();
                 }
@@ -169,10 +175,8 @@ namespace Flashminder
                 using (DefaultConnection db = new DefaultConnection())
                 {
                     Flashcard flashcard = db.Flashcards.Where(card => (card.Id == currentFlashcard.Id)).FirstOrDefault();
-                    if (File.Exists(flashcard.BackImage))
-                    {
-                        File.Delete(flashcard.BackImage);
-                    }
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(flashcard.BackImage);
+                    blobClient.Delete();
                     flashcard.BackImage = "";
                     db.SaveChanges();
                 }

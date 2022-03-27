@@ -109,14 +109,22 @@ namespace Flashminder
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
                     string filetype = Path.GetExtension(front_upload.FileName).ToString().ToLower();
-                    front_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_front_" + filetype));
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(user + "_" + fileName + "_front_" + filetype);
+                    using (var stream = front_upload.FileContent)
+                    {
+                        blobClient.Upload(stream);
+                    }
                     frontImage = user + "_" + fileName + "_front_" + filetype;
                 }
                 if (!string.IsNullOrEmpty(back_upload.FileName))
                 {
                     string fileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
                     string filetype = Path.GetExtension(back_upload.FileName).ToString().ToLower();
-                    back_upload.SaveAs(Server.MapPath("Images/" + user + "_" + fileName + "_back_" + filetype));
+                    var blobClient = BloblUtil.GetBlobContainer().GetBlobClient(user + "_" + fileName + "_back_" + filetype);
+                    using (var stream = back_upload.FileContent)
+                    {
+                        blobClient.Upload(stream);
+                    }
                     backImage = user + "_" + fileName + "_back_" + filetype;
                 }
                 int ret = DatabaseMutators.CreateFlashcard(userInt, category_dropdownlist.SelectedItem.Text, front_txtbx.Text, back_txtbx.Text, frontImage, backImage);

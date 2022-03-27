@@ -15,14 +15,14 @@ namespace FlashminderTest
     {
         string url = "";
         WebDriver driver;
-
+        int userId = 0;
 
         [SetUp]
         public void StartBrowser()
         {
             url = ConfigurationManager.AppSettings.Get("Website");
             driver = new ChromeDriver("./");
-            Helper.CreateUser("Test1", "Test");
+            userId = Helper.CreateUser("Test1", "Test");
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace FlashminderTest
                 driver.Quit();
             }
 
-            Helper.RemoveUser("Test1");
+            Helper.RemoveUser(userId);
         }
     }
 }

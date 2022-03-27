@@ -43,7 +43,6 @@ namespace Flashminder
                     newCard.FrontText = card.FrontText;
                     newCard.BackText = card.BackText;
                     newCard.CreatedDate = card.CreatedDate;
-                    newCard.fk_CardType = card.fk_CardType;
                     newCard.UserId = card.UserId;
                     newCard.ModifiedDate = card.ModifiedDate;
                     cards.Add(newCard);
@@ -104,7 +103,6 @@ namespace Flashminder
                     newCard.FrontText = card.FrontText;
                     newCard.BackText = card.BackText;
                     newCard.CreatedDate = card.CreatedDate;
-                    newCard.fk_CardType = card.fk_CardType;
                     newCard.UserId = card.UserId;
                     newCard.ModifiedDate = card.ModifiedDate;
                     cards.Add(newCard);

@@ -47,11 +47,11 @@ namespace Flashminder
                     }
                     if (!string.IsNullOrEmpty(flashcard.FrontImage))
                     {
-                        front_image.ImageUrl = "Images/" + flashcard.FrontImage;
+                        front_image.ImageUrl = "https://flashminderfiles.blob.core.windows.net/images/" + flashcard.FrontImage;
                     }
                     if (!string.IsNullOrEmpty(flashcard.BackImage))
                     {
-                        back_image.ImageUrl = "Images/" + flashcard.BackImage;
+                        back_image.ImageUrl = "https://flashminderfiles.blob.core.windows.net/images/" + flashcard.BackImage;
                     }
                     front_text.Text = flashcard.FrontText;
                     back_text.Text = flashcard.BackText;
