@@ -27,10 +27,8 @@ namespace Flashminder
                 {
                     category.Text = "All";
                 }
-                LoadFlashcard(userId, category.Text);
-            }
-
-
+            }                
+            LoadFlashcard(userId, category.Text);
             SetButtons();
         }
 
@@ -72,16 +70,26 @@ namespace Flashminder
             Flashcard_Algorithm_Data curData =  (Flashcard_Algorithm_Data)Session["curData"];
             if (curData != null)
             {
-                double days = (LearningAlgorithms.CalculateSM2Alg(5, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now ).TotalDays;
-                very_easy_btn.Text = "Very Easy (" + days.ToString("0.0") + ")";
-                days = (LearningAlgorithms.CalculateSM2Alg(4, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now).TotalDays;
-                easy_btn.Text = "Easy (" + days.ToString("0.0") + ")";
-                days = (LearningAlgorithms.CalculateSM2Alg(3, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now).TotalDays;
-                moderate_btn.Text = "Moderate ("+ days.ToString("0.0") + ")";
-                days = (LearningAlgorithms.CalculateSM2Alg(2, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now).TotalDays;
-                hard_btn.Text = "Hard (" + days.ToString("0.0") + ")";
-                days = (LearningAlgorithms.CalculateSM2Alg(1, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now).TotalDays;
-                very_hard_btn.Text = "Very Hard (" + days.ToString("0.0") + ")";
+                TimeSpan daysDateTime = (LearningAlgorithms.CalculateSM2Alg(5, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now);
+                double time = daysDateTime.TotalDays > 1 ? daysDateTime.TotalDays : daysDateTime.TotalHours;
+                string timeString = daysDateTime.TotalDays > 1 ? " days" : " hours";
+                very_easy_btn.Text = "Very Easy (" + time.ToString("0.0") + timeString + ")";
+                daysDateTime = (LearningAlgorithms.CalculateSM2Alg(4, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now);
+                time = daysDateTime.TotalDays > 1 ? daysDateTime.TotalDays : daysDateTime.TotalHours;
+                timeString = daysDateTime.TotalDays > 1 ? " days" : " hours";
+                easy_btn.Text = "Easy (" + time.ToString("0.0") + timeString + ")";
+                daysDateTime = (LearningAlgorithms.CalculateSM2Alg(3, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now);
+                time = daysDateTime.TotalDays > 1 ? daysDateTime.TotalDays : daysDateTime.TotalHours;
+                timeString = daysDateTime.TotalDays > 1 ? " days" : " hours";
+                moderate_btn.Text = "Moderate ("+ time.ToString("0.0") + timeString + ")";
+                daysDateTime = (LearningAlgorithms.CalculateSM2Alg(2, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now);
+                time = daysDateTime.TotalDays > 1 ? daysDateTime.TotalDays : daysDateTime.TotalHours;
+                timeString = daysDateTime.TotalDays > 1 ? " days" : " hours";
+                hard_btn.Text = "Hard (" + time.ToString("0.0") + timeString + ")";
+                daysDateTime = (LearningAlgorithms.CalculateSM2Alg(1, curData.Easiness, curData.Interval, curData.Repetitions, multiplier) - DateTime.Now);
+                time = daysDateTime.TotalDays > 1 ? daysDateTime.TotalDays : daysDateTime.TotalHours;
+                timeString = daysDateTime.TotalDays > 1 ? " days" : " hours";
+                very_hard_btn.Text = "Very Hard (" + time.ToString("0.0") + timeString + ")";
             }
         }
 
@@ -92,7 +100,7 @@ namespace Flashminder
 
             if (curData != null)
             {
-                if(btn.Text.StartsWith("Very Easy"))
+                if (btn.Text.StartsWith("Very Easy"))
                 {
                     curData.Quality = 5;
                     DatabaseMutators.UpdateNextDate(curData, float.Parse(multiplier_dropdown.SelectedValue));

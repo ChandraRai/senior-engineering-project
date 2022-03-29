@@ -45,6 +45,10 @@ namespace Flashminder
             }
             else
             {
+                if (interval == 0)
+                {
+                    interval = 1;
+                }
                 interval = (int) (Math.Round(interval * easiness));
             }
 

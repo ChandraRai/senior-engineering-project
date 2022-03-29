@@ -18,7 +18,7 @@ namespace Flashminder
             // If loading the page for the first time, populate the UserProfileGridView
             if(!IsPostBack)
             {
-                if(Session["CurrentUser"] == null)
+                if(HttpContext.Current.Session["CurrentUser"] == null)
                 {
                     Response.Redirect("About.aspx");
                 }
@@ -51,14 +51,15 @@ namespace Flashminder
 
                 foreach (var user in Users)
                 {
-                    if (Session["CurrentUser"] is null)
+                    if (HttpContext.Current.Session["CurrentUser"] is null)
                     {
                         Session["CurrentUser"] = "";
                         Session["Email"] = "";
+                        System.Web.Security.FormsAuthentication.SetAuthCookie("", false);
                     }
 
                     // verify Username
-                    if (user.Username == Session["CurrentUser"].ToString())
+                    if (user.Username == HttpContext.Current.Session["CurrentUser"].ToString())
                     {
                         myUser.Add(user);
                     }

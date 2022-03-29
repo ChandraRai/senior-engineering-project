@@ -25,6 +25,10 @@ namespace Flashminder
             {
                 LoadFlashcard(card);
             }
+            else
+            {
+                front_text.Text = "Unable to load flashcard.";
+            }
         }
 
 

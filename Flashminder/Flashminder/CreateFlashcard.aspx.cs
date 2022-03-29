@@ -55,6 +55,7 @@ namespace Flashminder
                 {
                     DatabaseMutators.CreateDefaultCategory(userInt);
                 }
+                category_dropdownlist.Items.Clear();
                 category_dropdownlist.DataSource = db.Categories.Where(cat => (cat.UserId == userInt)).ToList();
                 category_dropdownlist.DataBind();
             }

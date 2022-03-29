@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Flashminder {
-    
-    
-    public partial class ViewFlashcard {
-        
+namespace Flashminder
+{
+
+
+    public partial class ViewFlashcard
+    {
+
         /// <summary>
         /// front_image control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image front_image;
-        
+
         /// <summary>
         /// front_text control.
         /// </summary>
@@ -28,8 +30,8 @@ namespace Flashminder {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal front_text;
-        
+        protected global::System.Web.UI.WebControls.Label front_text;
+
         /// <summary>
         /// back_image control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Flashminder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image back_image;
-        
+
         /// <summary>
         /// back_text control.
         /// </summary>
@@ -46,6 +48,6 @@ namespace Flashminder {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal back_text;
+        protected global::System.Web.UI.WebControls.Label back_text;
     }
 }

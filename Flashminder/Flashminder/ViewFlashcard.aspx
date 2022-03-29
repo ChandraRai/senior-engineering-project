@@ -13,7 +13,7 @@
     .flip-card {
         background-color: transparent;
         width: 700px;
-        height: 400px;
+        height: 500px;
         border: 1px solid #f1f1f1;
         perspective: 1000px; /* Remove this if you don't want the 3D effect */
     }
@@ -44,7 +44,7 @@
     /* Style the front side (fallback if image is missing) */
     .flip-card-front {
         margin-top: 25px;
-        background-color: black;
+        background-color: grey;
         color: white;
         border-radius: 20px;
     }
@@ -52,9 +52,21 @@
     /* Style the back side */
     .flip-card-back {
         margin-top: 25px;
-        background-color: black;
+        background-color: grey;
         color: white;
         border-radius: 20px;
+    }
+
+    .front-text {
+    margin-top:25px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
+    }
+
+    .back-text {
+    margin-top:25px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
     }
 </style>
 
@@ -82,18 +94,18 @@
                     <div class="flip-card-inner">
                         <div class="front-card flip-card-front">
                             <div class="front-image ">
-                                <asp:Image ID="front_image" Style="margin-top: 25px;" runat="server" Height="300" Width="500" />
+                                <asp:Image ID="front_image" ImageUrl="//:0" Style="margin-top: 25px;" runat="server" Height="300" Width="500" onerror="this.style.display='none'" />
                             </div>
                             <div class="front-text">
-                                <asp:Literal ID="front_text" runat="server"></asp:Literal>
+                                <asp:Label ID="front_text" runat="server"></asp:Label>
                             </div>
                         </div>
                         <div class="back-card flip-card-back flip">
                             <div class="back-image ">
-                                <asp:Image Style="margin-top: 25px;" ID="back_image" runat="server" Height="300" Width="500" />
+                                <asp:Image Style="margin-top: 25px;" ImageUrl="//:0" ID="back_image" runat="server" Height="300" Width="500" onerror="this.style.display='none'"/>
                             </div>
                             <div class="back-text">
-                                <asp:Literal ID="back_text" runat="server"></asp:Literal>
+                                <asp:Label ID="back_text" runat="server"></asp:Label>
                             </div>
                         </div>
                     </div>

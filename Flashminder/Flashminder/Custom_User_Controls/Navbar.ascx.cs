@@ -13,7 +13,7 @@ namespace Flashminder.Custom_User_Controls
         {
             if(!IsPostBack)
             {
-                if (Session["CurrentUser"] != null)
+                if (HttpContext.Current.Session["CurrentUser"] != null)
                 {
                     PrivatePlaceHolder.Visible = true;
                     PublicPlaceHolder.Visible = false;

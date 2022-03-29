@@ -113,33 +113,35 @@
             </asp:DropDownList>
                     </div>
                 </div>
-                <div class="panel panel-footer">
+                <div class="panel panel-footer" style="height:550px">
                     <asp:Label ID="currentFlashcardId_label" CssClass="flashcardID hidden" runat="server" Visible="True"></asp:Label>
                     <div id="Flashcard"></div>
                 </div>
             </div>
 
 
+        <div style="display:flex; justify-content:center; margin-bottom:50px;">
+            <div class="very-easy-btn" style="margin-bottom: 5px; margin-left:10px">
+                <asp:Button runat="server" ID="very_easy_btn" CssClass="btn btn-success" Text="Very Easy" OnClick="ButtonPressed" OnClientClick="updateVeryEasyStatistics()" />
+            </div>
 
-        <div class="very-easy-btn" style="margin-bottom: 5px;">
-            <asp:Button runat="server" ID="very_easy_btn" CssClass="btn btn-success" Text="Very Easy" OnClick="ButtonPressed" OnClientClick="updateVeryEasyStatistics()" />
+            <div class="easy-btn" style="margin-bottom: 5px; margin-left:10px">
+                <asp:Button runat="server" ID="easy_btn" CssClass="btn btn-info" Text="Easy" OnClick="ButtonPressed" OnClientClick="updateEasyStatistics()" />
+            </div>
+
+            <div class="moderate-btn" style="margin-bottom: 5px; margin-left:10px">
+                <asp:Button runat="server" ID="moderate_btn" CssClass="btn btn-warning" Text="Moderate" OnClick="ButtonPressed" OnClientClick="updateModerateStatistics()" />
+            </div>
+
+            <div class="hard-btn" style="margin-bottom: 5px; margin-left:10px">
+                <asp:Button runat="server" ID="hard_btn" CssClass="btn btn-primary" Text="Hard" OnClick="ButtonPressed" OnClientClick="updateHardStatistics()" />
+            </div>
+
+            <div class="very-hard-btn" style="margin-bottom: 5px; margin-left:10px">
+                <asp:Button runat="server" ID="very_hard_btn" CssClass="btn btn-danger" Text="Very Hard" OnClick="ButtonPressed" OnClientClick="updateVeryHardStatistics()" />
+            </div>
         </div>
 
-        <div class="easy-btn" style="margin-bottom: 5px;">
-            <asp:Button runat="server" ID="easy_btn" CssClass="btn btn-info" Text="Easy" OnClick="ButtonPressed" OnClientClick="updateEasyStatistics()" />
-        </div>
-
-        <div class="moderate-btn" style="margin-bottom: 5px;">
-            <asp:Button runat="server" ID="moderate_btn" CssClass="btn btn-warning" Text="Moderate" OnClick="ButtonPressed" OnClientClick="updateModerateStatistics()" />
-        </div>
-
-        <div class="hard-btn" style="margin-bottom: 5px;">
-            <asp:Button runat="server" ID="hard_btn" CssClass="btn btn-primary" Text="Hard" OnClick="ButtonPressed" OnClientClick="updateHardStatistics()" />
-        </div>
-
-        <div class="very-hard-btn" style="margin-bottom: 5px;">
-            <asp:Button runat="server" ID="very_hard_btn" CssClass="btn btn-danger" Text="Very Hard" OnClick="ButtonPressed" OnClientClick="updateVeryHardStatistics()" />
-        </div>
 
     </div>
 

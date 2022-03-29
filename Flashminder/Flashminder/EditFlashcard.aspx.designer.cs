@@ -51,15 +51,6 @@ namespace Flashminder
         protected global::System.Web.UI.WebControls.DropDownList category_dropdownlist;
 
         /// <summary>
-        /// front_lbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label front_lbl;
-
-        /// <summary>
         /// front_img_change_pnl control.
         /// </summary>
         /// <remarks>
@@ -112,15 +103,6 @@ namespace Flashminder
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox front_txtbx;
-
-        /// <summary>
-        /// back_lbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label back_lbl;
 
         /// <summary>
         /// back_img_change_pnl control.

@@ -54,12 +54,12 @@
                                 <div id="id" class="flashcard-id" hidden="hidden"><%# Eval("Id") %></div>
 
                                 <div class="col-md-4 front" style="margin-right: 20px; margin-top:20px;">
-                                    <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="FrontImage" ImageUrl='<%# "https://flashminderfiles.blob.core.windows.net/images/"+ Eval("FrontImage")?.ToString()%>' />
+                                    <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="FrontImage" ImageUrl='<%# "https://flashminderfiles.blob.core.windows.net/images/"+ Eval("FrontImage")?.ToString()%>' onerror="this.style.display='none'" />
                             
                                     <%# Eval("FrontText")%>
                                 </div>
                                 <div class="col-md-4 back" style="margin-right: 20px; margin-top:20px;">
-                                    <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="BackImage" ImageUrl='<%# "https://flashminderfiles.blob.core.windows.net/images/"+ Eval("BackImage")?.ToString()%>' />
+                                    <asp:Image CssClass="thumbnail" runat="server" Height="100" Width="200" ID="BackImage" ImageUrl='<%# "https://flashminderfiles.blob.core.windows.net/images/"+ Eval("BackImage")?.ToString()%>' onerror="this.style.display='none'"/>
                                
                                     <%# Eval("BackText")%>
                                 </div>

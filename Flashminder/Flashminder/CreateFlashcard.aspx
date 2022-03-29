@@ -51,6 +51,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
+					$('#front_img').css('display', 'block');
                     $('#front_img').attr('src', e.target.result);
                 }
 
@@ -63,6 +64,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
+					$('#back_img').css('display', 'block');
                     $('#back_img').attr('src', e.target.result);
                 }
 
@@ -96,7 +98,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
-                <div id="MessagePanel">
+                <div id="MessagePanel" style="padding-bottom:25px">
                     <asp:Panel ID="message_pnl" CssClass="message_pnl" runat="server">
                         <a href="#" class="close hidden" data-dismiss="alert" aria-label="close">&times;</a>
                         <asp:Label ID="message_lbl" CssClass="message_lbl" runat="server" />
@@ -115,7 +117,7 @@
                         <!--<asp:Label ID="front_lbl" runat="server">Front</asp:Label>-->
                         <h4 class="text-left">Front</h4>
                         <asp:FileUpload ID="front_upload" runat="server" OnChange="readURLFront(this)" CssClass="btn btn-default" />
-                        <img id="front_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" />
+                        <img id="front_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" onerror="this.style.display='none'" />
                         <br />
                         <asp:TextBox ID="front_txtbx" class="front_txtbx" runat="server" TextMode="MultiLine" placeholder="Enter text here."></asp:TextBox>
                     </div>
@@ -126,7 +128,7 @@
                         <!--<asp:Label ID="back_lbl" runat="server">Back</asp:Label>-->
                         <h4 class="text-left">Back</h4>
                         <asp:FileUpload ID="back_upload" runat="server" OnChange="readURLBack(this)" CssClass="btn btn-default" />
-                        <img id="back_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" />
+                        <img id="back_img" src="//:0" style="height: 150px; width: 290px" class="img-responsive" onerror="this.style.display='none'" />
                         <br />
                         <asp:TextBox ID="back_txtbx" class="back_txtbx" runat="server" TextMode="MultiLine" placeholder="Enter text here."></asp:TextBox>
                     </div>
