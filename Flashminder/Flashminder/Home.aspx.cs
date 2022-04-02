@@ -62,6 +62,7 @@ namespace Flashminder
                     if (user.Username == HttpContext.Current.Session["CurrentUser"].ToString())
                     {
                         myUser.Add(user);
+                        break;
                     }
                 }
                 return myUser;

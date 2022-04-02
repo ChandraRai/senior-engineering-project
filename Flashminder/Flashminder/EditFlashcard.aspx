@@ -143,7 +143,9 @@
 						<asp:TextBox ID="back_txtbx" CssClass="back_txtbx" runat="server" TextMode="MultiLine" placeholder="Enter text here..."></asp:TextBox>
 					</div>
                 </div>
-                <asp:Button ID="update_btn" runat="server" Text="Update Flashcard" OnClientClick="return ValidateForm()" OnClick="UpdateFlashcard" UseSubmitBehavior="true" />
+                <asp:Button ID="update_btn" runat="server" CssClass="btn btn-primary" Text="Update Flashcard" OnClientClick="return ValidateForm()" OnClick="UpdateFlashcard" UseSubmitBehavior="true" />
+				<asp:Button ID="ButtonCancel" runat="server" CssClass="btn btn-warning" Text="Back" OnClick="RedirectToViewFlashcards" />
+
             </div>
         </div>
     </div>

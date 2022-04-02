@@ -194,5 +194,10 @@ namespace Flashminder
             back_img_change_pnl.Visible = true;
             back_img_change_btn.Visible = false;
         }
+
+        protected void RedirectToViewFlashcards(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ViewFlashcards.aspx");
+        }
     }
 }
