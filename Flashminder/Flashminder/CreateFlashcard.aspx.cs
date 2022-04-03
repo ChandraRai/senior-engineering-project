@@ -47,18 +47,22 @@ namespace Flashminder
 
             // if no category exists, make a default category
             // populate drop down
-            using (DefaultConnection db = new DefaultConnection())
+            if( !IsPostBack)
             {
-                int userInt = int.Parse(user);
-                List<Category>categories = db.Categories.Where(cat=>(cat.UserId==userInt)).ToList();
-                if (categories.Count == 0)
+                using (DefaultConnection db = new DefaultConnection())
                 {
-                    DatabaseMutators.CreateDefaultCategory(userInt);
+                    int userInt = int.Parse(user);
+                    List<Category>categories = db.Categories.Where(cat=>(cat.UserId==userInt)).ToList();
+                    if (categories.Count == 0)
+                    {
+                        DatabaseMutators.CreateDefaultCategory(userInt);
+                    }
+                    category_dropdownlist.Items.Clear();
+                    category_dropdownlist.DataSource = db.Categories.Where(cat => (cat.UserId == userInt)).ToList();
+                    category_dropdownlist.DataBind();
                 }
-                category_dropdownlist.Items.Clear();
-                category_dropdownlist.DataSource = db.Categories.Where(cat => (cat.UserId == userInt)).ToList();
-                category_dropdownlist.DataBind();
             }
+
             
             // set result message if successful then clear
             if ((Session["ResultMessage"] != null) && (Session["ResultType"] != null))

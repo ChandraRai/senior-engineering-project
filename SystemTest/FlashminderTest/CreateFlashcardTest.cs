@@ -211,6 +211,7 @@ namespace FlashminderTest
         {
             Helper.CreateCategory(userID, "Default", "");
             Helper.CreateCategory(userID, "CategoryRepeat", "");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             Assert.IsFalse(CreateCategory("CategoryRepeat", "Description"));
         }
 

@@ -31,7 +31,7 @@ namespace FlashminderTest
             Helper.SignIn(driver, url, "Test1", "Test");
             var logout = driver.FindElement(By.Id("ctl08_logout"));
             logout.Click();
-            Assert.IsTrue(driver.Title == "About");
+            Assert.IsTrue(driver.PageSource.Contains("Logged out"));
         }
 
         [TearDown]
