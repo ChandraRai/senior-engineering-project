@@ -31,11 +31,11 @@
 
 		function ValidateForm() {
 			var ret = true;
-			if (!$(".front_txtbx").val() && !$(".front_upload").val()) {
+			if (!$(".front_txtbx").val() && !$(".front_upload").val() && !$("#MainContent_current_front_img")[0].src) {
 				ShowMessage("Front of the card needs text or an image", "warning");
 				ret = false;
 			}
-			if ((!$(".back_txtbx").val() && !$(".back_upload").val())) {
+			if (!$(".back_txtbx").val() && !$(".back_upload").val() && !$("#MainContent_current_back_img")[0].src) {
 				ShowMessage("Back of the card needs text or an image", "warning");
 				ret = false;
 			}
